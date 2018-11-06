@@ -1,0 +1,27 @@
+<ion-navbar padding color="bees" hideBackButton>
+    <ion-buttons left>
+      <button
+        ion-button 
+        icon-only
+        menuToggle 
+        large>
+        <ion-icon large name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+  
+    <ion-title padding-left (click)="(appUser  && appUser.isAdmin === true) ? onShowAdminOptions() : ''">
+      {{ (appUser === null || (appUser !== null && currentPage !== 'HomePage')) ? 'My Beesbox' : appUser.name }}
+    </ion-title>
+  
+    <ion-buttons right *ngIf="!(currentPage === 'LoginPage')">
+      <button 
+        padding-right
+        ion-button 
+        icon-only 
+        clear
+        (click)="onShowCart()">
+        <ion-icon name="cart"></ion-icon>
+        <ion-badge item-end>0</ion-badge>
+      </button>
+    </ion-buttons>
+  </ion-navbar>

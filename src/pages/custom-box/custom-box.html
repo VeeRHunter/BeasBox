@@ -1,0 +1,116 @@
+
+<ion-header>
+  <!-- <ion-navbar>
+    <ion-title>CustomBox</ion-title>
+  </ion-navbar> -->
+</ion-header>
+
+<ion-content>
+    <div class="back-bt" (tap)="goBack()">
+        <!-- navPop -->
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+        BACK
+    </div>
+    <div class="cart-bt" (tap)="onShowCart()">
+        <ion-icon ios="ios-cart-outline" md="md-cart"></ion-icon>
+    </div>
+    <div class="menu-bt" menuToggle="right">
+        <!-- <img src="assets/imgs/menu-bt.jpg"> -->
+        <ion-icon name="menu"></ion-icon>
+    </div>
+    <div class="bg">
+        <img src="assets/imgs/bg-cart2.jpg">
+        <p class="title">CUSTOM BOXES</p>
+        <p class="subtitle">Bee Yourself <sup>TM</sup></p>
+    </div> 
+    <ion-list padding-horizontal  text-wrap>
+        <ion-item text-wrap no-lines>
+            Since we put the MY in MyBeesBox, We figured we'd give our customers the ability to request a from-scratch customized gift box!
+            If you don't see what you need in the pre-curated gift boxes or in the build your own, don't despair!
+            We can work with you to make your dream gift and vision come to life!
+            Fee free to inquire below, and a BeesBox representative will get back to you shortly!
+        </ion-item> 
+        <br>
+        <ion-item>
+            <ion-label stacked>Email address</ion-label>
+            <ion-input type="email" placeholder="me@email.com" [(ngModel)]="email"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Full name</ion-label>
+            <ion-input type="text" placeholder="John Doe" [(ngModel)]="full_name"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Your phone number</ion-label>
+            <ion-input type="text" placeholder="123 456 7890" [(ngModel)]="phone_number"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Project date</ion-label>
+            <ion-input type="text"  placeholder="John Doe" [(ngModel)]="date"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Location</ion-label>
+            <ion-input type="text" placeholder="Atlanta or Hearst Country Club" [(ngModel)]="location"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>What type of gifting service do you need?</ion-label>
+            <ion-select [(ngModel)]="type">
+                <ion-option value="wedding">Wedding</ion-option>
+                <ion-option value="coperate">Corporate</ion-option>
+                <ion-option value="social">Social</ion-option>
+                <ion-option value="event">Event</ion-option>
+                <ion-option value="party">Party</ion-option>
+                <ion-option value="family">Family</ion-option>
+                <ion-option value="design">Design</ion-option>
+                <ion-option value="other">Other</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Estimated gift recipient count</ion-label>
+            <ion-input type="text" placeholder="1 - 10,000" [(ngModel)]="count"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Estimated budget</ion-label>
+            <ion-input type="text" placeholder="$300" [(ngModel)]="budget"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Estimated cost per gift box</ion-label>
+            <ion-select [(ngModel)]="cost">
+                <ion-option value="budget1">$30-$50</ion-option>
+                <ion-option value="budget2">$50-$100</ion-option>
+                <ion-option value="budget3">$100+</ion-option>
+                <ion-option value="other">Other</ion-option>
+            </ion-select>
+        </ion-item>
+        <br>        
+        <ion-item no-lines>
+            <ion-label>Tell us about your project</ion-label>
+        </ion-item>
+        <ion-item no-lines class="text">
+            <ion-textarea item-right [(ngModel)]="description" placeholder="Describe your project..."></ion-textarea>
+        </ion-item>   
+        <br>
+        <ion-item>
+            <ion-label stacked>How did you hear about us?</ion-label>
+            <ion-select [(ngModel)]="reason">
+                <ion-option value="client">Client Referal</ion-option>
+                <ion-option value="industry">Industry Referal</ion-option>
+                <ion-option value="beesbox">Https://www.mybeesbox.com/</ion-option>
+                <ion-option value="instagram">Https://www.instagram.com/mybeesbox.com/</ion-option>
+                <ion-option value="facebook">Facebook</ion-option>
+                <ion-option value="google">Google</ion-option>
+                <ion-option value="other">Other</ion-option>
+            </ion-select>
+        </ion-item>
+        <br>
+        <ion-item no-lines>
+            <ion-label>Any fun facts you want to add:</ion-label>
+        </ion-item>
+        <ion-item no-lines class="text">
+            <ion-textarea item-right [(ngModel)]="additional"></ion-textarea>
+        </ion-item>   
+    </ion-list>
+
+    <div padding >
+        <button ion-button full round (tap)="submit()">SUBMIT</button>
+    </div>
+</ion-content>

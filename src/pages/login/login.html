@@ -1,0 +1,156 @@
+<ion-header>
+  <!-- <ion-navbar padding color="bees" hideBackButton>  
+    <ion-title> My Beesbox</ion-title>
+  </ion-navbar> -->
+
+  <!-- <ion-toolbar>
+    <ion-segment [(ngModel)]="status">
+      <ion-segment-button value="signin">
+        Login
+      </ion-segment-button>
+      <ion-segment-button value="signup">
+        Register
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar> -->
+</ion-header>
+
+<ion-content [ngSwitch]="status">
+    <ng-container class="new_signin" *ngSwitchCase="'signin'">
+        <div class="bg">
+          <img src="assets/imgs/bg3.png">
+          <p class="title">LOGIN INTO<br>
+          YOUR BEESBOX<br>
+          ACCOUNT</p>
+          <p class="subtitle">It's as easy as 1, 2, bee.</p>
+        </div>
+        <ion-list no-lines padding>
+            <ion-item>
+                <ion-input #e placeholder="Email Address" type="email" [(ngModel)]="logEmail" required></ion-input>
+                <p *ngIf="e.touched && !e.valid"></p>
+            </ion-item>
+            <ion-item>
+                <ion-input #p placeholder="Password" type="password" [(ngModel)]="logPass" min="6" required></ion-input>
+                <p *ngIf="p.touched && !p.valid"></p>
+            </ion-item>
+        </ion-list>
+        <div padding-horizontal>
+          <button ion-button (tap)="login()" class="gradient-bt" style="width: 99.5%">LET'S BEGIN</button>
+          <button ion-button outline (tap)="toggleStatus()" style="width: 99.5%">{{toggleLabel}}</button>
+        </div>
+        <ion-grid class="grid">
+            <ion-row class="row">
+              <ion-col col-7></ion-col>
+              <ion-col class="forgot-password" col-5 text-right>
+                  Forgot password?
+              </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ng-container>
+
+    <ng-container class="new_signup" *ngSwitchCase="'signup'">
+        <div class="bg">
+          <img src="assets/imgs/bg1.jpg">
+          <p class="title">CREATE<br>
+          YOUR BEESBOX<br>
+          ACCOUNT</p>
+          <p class="subtitle">It's as easy as 1, 2, bee.</p>
+        </div>
+        <ion-list no-lines padding>
+            <ion-item>
+                <ion-input #ee placeholder="Email Address" type="email" [(ngModel)]="regEmail" required></ion-input>
+                <p *ngIf="ee.touched && !ee.valid"></p>
+            </ion-item>
+            <ion-item>
+                <ion-input #pp placeholder="Password" type="password" [(ngModel)]="regPass" min="6" required></ion-input>
+                <p *ngIf="pp.touched && !pp.valid"></p>
+            </ion-item>
+            <ion-item>
+                <ion-input #c placeholder="Confirm Password" type="password" [(ngModel)]="regConfirm" min="6" required></ion-input>
+                <p *ngIf="c.touched && !c.valid">Please re-enter a valid password</p>
+                <p *ngIf="c.value === pp.value">password and confirmation do not match</p>
+            </ion-item>
+        </ion-list>
+        <div padding-horizontal>
+          <button ion-button (tap)="doRegister()" class="gradient-bt" style="width: 99.5%">LET'S BEGIN</button>
+          <button ion-button outline (tap)="toggleStatus()" style="width: 99.5%">{{toggleLabel}}</button>
+        </div>
+
+        <ion-grid>
+            <ion-row class="row">
+              <ion-col col-7>
+                  <ion-item no-lines>
+                      <ion-checkbox checked="true" color="dark"></ion-checkbox>
+                      <ion-label>Opt me in for Email updates.</ion-label>
+                  </ion-item>
+              </ion-col>
+              <ion-col class="forgot-password" col-5 text-right>
+                  Forgot password?
+              </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ng-container>
+
+    <!-- <ion-card *ngSwitchCase="'signin'">
+      <ion-card-content>
+        <ion-item>
+          <ion-label floating>Email</ion-label>
+          <ion-input #e type="email" [(ngModel)]="logEmail" required></ion-input>
+          <p *ngIf="e.touched && !e.valid"></p>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Password</ion-label>
+          <ion-input #p type="password" [(ngModel)]="logPass" min="6" required></ion-input>
+          <p *ngIf="p.touched && !p.valid"></p>
+        </ion-item>
+      </ion-card-content>
+      <ion-row justify-content-center padding>
+        <button ion-button round full (click)="login()">
+          <ion-icon item-left name="key"></ion-icon>
+          Login
+        </button>
+      </ion-row>
+    </ion-card> -->
+    <!-- <ion-card *ngSwitchCase="'signup'">
+      <ion-card-content>
+        <ion-item>
+          <ion-label floating>Email</ion-label>
+          <ion-input #ee type="email" [(ngModel)]="regEmail" required></ion-input>
+          <p *ngIf="ee.touched && !ee.valid">Please enter a valid email</p>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Password</ion-label>
+          <ion-input #pp type="password" [(ngModel)]="regPass" min="6" required></ion-input>
+          <p *ngIf="pp.touched && !pp.valid">Please enter a valid password</p>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Confirm Password</ion-label>
+          <ion-input #c type="password" [(ngModel)]="regConfirm" min="6" required></ion-input>
+          <p *ngIf="c.touched && !c.valid">Please re-enter a valid password</p>
+          <p *ngIf="c.value === pp.value">password and confirmation do not match</p>
+        </ion-item>
+      </ion-card-content>
+      <ion-row justify-content-center padding>
+        <button ion-button round full (click)="doRegister()">
+          <ion-icon item-left name="key"></ion-icon>
+          Register
+        </button>
+      </ion-row>
+    </ion-card> -->
+
+    <!-- social -->
+    <!-- <ion-grid>
+      <ion-row justify-content-center padding>
+
+        <ion-col *ngFor="let soc of socials">
+          <button 
+            ion-fab
+            icon-only
+            (click)="doLogin(soc.name)">
+            <ion-icon [name]="soc.icon"></ion-icon>
+          </button>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid> -->
+</ion-content>

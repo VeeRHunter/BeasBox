@@ -1,0 +1,61 @@
+page-menu {
+    .toolbar {
+        height: 50px !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        min-height: 50px !important;
+    }
+    .toolbar {
+        height: 50px !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        min-height: 50px !important;
+    }
+    .toolbar-background, .toolbar-background-md {
+        background: #ffffff;
+    }
+
+    .gradient-bt {
+        // background: #c1c1d6;
+        // background: linear-gradient(135deg, #c1c1d6 0%, #7bbfad 100%);
+        // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c1c1d6', endColorstr='#7bbfad',GradientType=1 );
+        // background: url(../assets/imgs/bg-olive.svg) center center no-repeat;
+        // background-size: cover;
+    }
+    .user-meta {
+        width: 100%;
+        height: 150px;
+        padding: 50px 20px;
+    }
+    .user-name {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #FFF;
+        text-align: right;
+        margin-bottom: 0;
+    }
+    .view-profile {
+        font-size: 1.4rem;
+        color: #FFF;
+        text-align: right;
+    }
+    .list-md .item-block .item-inner {
+        border-bottom: 1px solid #dedede;
+    }
+    .item-md.item-block .item-inner {
+        padding-right: 8px;
+        border-bottom: 1px solid #dedede;
+    }
+    ion-content > div.scroll-content > button.option {
+        position: absolute;
+        bottom: 10px;
+        width: 90%;
+        margin-left: 5%;
+        border-radius: 5px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    ion-menu ion-label {
+        font-weight: bold;
+    }
+}

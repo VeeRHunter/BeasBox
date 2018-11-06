@@ -1,0 +1,23 @@
+<ion-header>
+
+  <nav-bar></nav-bar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-card *ngFor="let feat of sampleFeatures">
+
+      <ion-card-header>
+        <ion-icon name="feat.img"></ion-icon>
+        {{ feat.headline }}
+      </ion-card-header>
+      
+      <ion-card-content>
+        {{ feat.desc }}
+      </ion-card-content>
+      
+    </ion-card>
+  </ion-list>
+</ion-content>

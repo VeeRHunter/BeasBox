@@ -1,0 +1,72 @@
+<ion-header no-border>
+  <!-- <nav-bar></nav-bar> -->
+</ion-header>
+
+<ion-content #content>
+  <div class="back-bt" (tap)="goBack()">
+      <!-- navPop -->
+      <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      BACK
+  </div>
+  <div class="cart-bt" (tap)="onShowCart()">
+      <ion-icon ios="ios-cart-outline" md="md-cart"></ion-icon>
+  </div>
+  <div class="menu-bt" menuToggle="right">
+      <!-- <img src="assets/imgs/menu-bt.jpg"> -->
+      <ion-icon name="menu"></ion-icon>
+  </div>
+  <div class="first-block">
+      <div class="mask"></div>
+      <img src="assets/imgs/pre-header.jpg">
+      <div class="first-line">Bundle Items</div>
+      <div class="third-line" style="font-family: 'GeorgiaScript'">Item made just for Him or Her</div>
+  </div>
+
+    <!-- <search-toolbar></search-toolbar> -->
+    
+    <ion-searchbar
+        placeholder="Search"
+        [showCancelButton]="false"
+        [(ngModel)]="search" 
+        (ionInput)="onModifySearch()"
+        (ionCancel)="onCancelSearch()">
+    </ion-searchbar> 
+
+    <!-- <ion-segment [(ngModel)]="selectedFilter" padding (ionChange)="filterChanged($event)">
+        <ion-segment-button value="new">
+        New
+        </ion-segment-button>
+        <ion-segment-button value="featured">
+        Feature
+        </ion-segment-button>
+        <ion-segment-button value="popular">
+        Popular
+        </ion-segment-button>
+        <ion-segment-button value="picks">
+        Staff Picks
+        </ion-segment-button>
+    </ion-segment> -->
+
+    <ng-container [ngSwitch]="selectedView">    
+        <ion-list *ngSwitchCase="'list'">
+            <ng-container *ngFor="let prod of productList">
+
+                <product-list [product]="prod"></product-list>
+
+            </ng-container>
+        </ion-list>
+        <ion-grid *ngSwitchCase="'grid'" no-padding>
+            <ion-row no-padding>
+                <ion-col 
+                [attr.col-6]="curSize === 1 ? true : null"
+                [attr.col-auto]="curSize === 2 ? true : null"
+                [attr.col-4]="curSize === 0 ? true : null" 
+                *ngFor="let prod of productList">
+
+                <product-grid [product]="prod"></product-grid>
+
+            </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ng-container>
+</ion-content>

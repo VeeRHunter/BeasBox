@@ -1,0 +1,15 @@
+<ion-header no-border>
+    <ion-navbar #navbar>
+        <ion-title>
+            Admin Products View
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <button ion-button (click)="onCreateNewProduct()">
+        <ion-icon name="add" icon-left padding-right></ion-icon>
+        Create New Product
+    </button>
+    <new-product></new-product>
+</ion-content>

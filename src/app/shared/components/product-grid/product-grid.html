@@ -1,0 +1,40 @@
+<ion-card *ngIf="product.name" (click)="showProductDetails(product)">
+    <img [src]="product.images[0].src" />
+    <ion-card-content text-center>
+        <ion-card-title text-wrap no-padding>
+            <!--{{ product.name.length > 20 || gridSize < 2 ?
+                (product.name | truncate:25:true:'') :-->
+                {{ product.name }}
+        </ion-card-title>
+        <!-- <p *ngIf="gridSize > 0" [innerHTML]="gridSize < 2 ? 
+            (product.short_description | truncate:50:true:'...') :
+            product.short_description"></p> -->
+            
+        <ion-label no-padding [innerHTML]="product.price | currency:'USD':'symbol'" color="primary" style="font-weight: 500;"></ion-label>
+        
+    </ion-card-content>
+
+    <!-- <ion-row text-center no-padding no-margin>
+        <ion-col no-padding no-margin>
+            <button
+                no-margin 
+                *ngIf="!isInCart; else addRemove"
+                ion-button 
+                block 
+                full 
+                (click)="addToCart(product)">
+                <ion-icon name="add" item-left></ion-icon>
+                Add To Cart
+            </button>
+
+            <ng-template #addRemove>
+                <button ion-button item-left>
+                    <ion-icon name="remove"></ion-icon>
+                </button>
+                <button ion-button item-right>
+                    <ion-icon name="add"></ion-icon>
+                </button>
+            </ng-template>
+        </ion-col>
+    </ion-row> -->
+</ion-card>

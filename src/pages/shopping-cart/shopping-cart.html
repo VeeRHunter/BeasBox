@@ -1,0 +1,77 @@
+
+<ion-header>
+  <!-- <nav-bar>  </nav-bar> -->
+</ion-header>
+
+
+<ion-content>
+    <div class="back-bt" (tap)="goBack()"> <!-- navPop -->
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+        &nbsp;&nbsp;Keep Shopping
+    </div>
+    <div class="menu-bt" menuToggle="right">
+        <img src="assets/imgs/menu-bt.jpg">
+        <ion-icon name="menu"></ion-icon>
+    </div>
+    <div class="bg">
+        <!--bg-cart1.jpg  -->
+        <img src="assets/imgs/bg-peach.svg">
+        <p class="title">
+          CART <ion-icon ios="ios-cart-outline" md="md-cart"></ion-icon>
+        </p>
+    </div>
+    <ion-list no-lines padding-horizontal >
+      <!-- <ion-list-header text-center>
+          <ng-container *ngIf="appUser?.name; else anon">
+            {{ appUser?.name }}'s cart
+          </ng-container>
+          <ng-template #anon>
+            Welcome, anonymous user
+          </ng-template>
+      </ion-list-header> -->
+      
+      <ng-container *ngIf="!cart?.items?.length; else showCart">
+          <ion-item text-center no-lines style="border-bottom: none !important">
+            Cart is empty!
+          </ion-item>
+      </ng-container>
+
+      <ng-template #showCart>
+          <ng-container *ngFor="let item of cart.items; let i = index">
+            <cart-item [item]="item" (add)="addQuantity($event)" (sub)="subQuantity($event)" (remove)="removeItem($event)"></cart-item>
+          </ng-container>
+          <hr>
+          <ion-item>
+            <ion-label item-start><h1><b>Subtotal</b></h1></ion-label>
+            <ion-label item-end text-right><h1><b>{{subtotal | currency:'USD':'symbol'}}</b></h1></ion-label>
+          </ion-item> 
+          <br>
+          <button ion-button (tap)="completeOrder()" round full class="gradient-bt">COMPLETE ORDER</button>      
+      </ng-template>
+    </ion-list>    
+</ion-content>
+
+<!-- <ion-footer ion-row>
+  <button
+    (click)="onClearCart()" 
+    [disabled]="!cart?.length" 
+    color="danger" 
+    ion-button 
+    full 
+    block 
+    ion-col 
+    col-6>
+    Clear cart
+  </button>
+
+  <button 
+    ion-button
+    [disabled]="!cart?.length" 
+    full 
+    block 
+    ion-col 
+    col-6
+    (click)="onShowCheckout()">
+    Checkout
+  </button>
+</ion-footer> -->

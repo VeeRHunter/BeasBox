@@ -1,0 +1,54 @@
+<ion-menu [content]="content" side="right" >
+    <ion-header>
+        <ion-navbar>
+            <img src="assets/imgs/menu-bg.jpg"/>
+            <ion-buttons end>
+                <button ion-button icon-only (tap)="navMyCart()" menuClose color="primary">
+                    <ion-icon ios="ios-cart-outline" md="md-cart"></ion-icon>
+                </button>
+                 <button ion-button icon-only menuClose>
+                    <ion-icon name="menu"></ion-icon>
+                    <!-- <div class="menu-bt" menuToggle><img src="assets/imgs/menu-bt.jpg"></div> -->
+                </button>
+            </ion-buttons>          
+            
+        </ion-navbar>
+    </ion-header>
+    <ion-content>
+            <div class="user-meta gradient-bt" menuClose (tap)="navProfile()">
+                <div class="user-name">
+                    {{usernameObservable | async}}
+                </div>
+                <div class="view-profile">
+                    VIEW MY PROFILE &gt;
+                </div>
+            </div>
+            <ion-list>
+                <button ion-item menuClose (tap)="navHome()" detail-push>
+                    HOME <!-- <ion-icon name ="arrow-forward"></ion-icon> -->
+                </button>
+                <!-- <button ion-item menuClose (tap)="navPreCurated()" detail-push>
+                    SHOP PRE-CURATED
+                </button>
+                <button ion-item menuClose (tap)="navBundleItems()" detail-push>
+                    SHOP BUNDLE ITEMS
+                </button> -->
+                <button ion-item menuClose (tap)="navCustomBox()" detail-push>
+                    CAN'T FIND WHAT YOU WANT?
+                </button>
+                <button ion-item menuClose (tap)="navMyOrders()" detail-push>
+                    MY ORDERS
+                </button>
+                <button ion-item menuClose (tap)="navMyCart()" detail-push>
+                    MY CART
+                </button>
+            </ion-list>
+            <button full ion-button (tap)="doLogout()">LOG OUT {{usernameObservable | async}}</button>
+            <!-- showAllCategories() -->
+            <!-- *ngFor="let cat of catList; let i = index" -->
+            <!-- <ion-icon item-left [name]="categoryIcons[i]"></ion-icon>
+                {{ cat.name }} -->
+    </ion-content>
+</ion-menu>
+
+<ion-nav #content [root]="menuRoot" swipeBackEnabled="false"></ion-nav>

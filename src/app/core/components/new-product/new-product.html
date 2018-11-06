@@ -1,0 +1,22 @@
+<ion-list>
+  <ion-item>
+    <ion-label stacked>Product title:</ion-label>
+    <ion-input type="text" name="title"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>Product description:</ion-label>
+    <ion-textarea name="description"></ion-textarea>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>Price:</ion-label>
+    <ion-input type="text"><ion-icon float-left name="usd"></ion-icon></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Category:</ion-label>
+    <ion-select name="category">
+      <ion-option *ngFor="let cat of categories$ | async" [value]="cat.$key">
+        {{ cat.name }}
+      </ion-option>
+    </ion-select>
+  </ion-item>
+</ion-list>

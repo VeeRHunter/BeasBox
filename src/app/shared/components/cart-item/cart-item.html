@@ -1,0 +1,20 @@
+<ion-item text-wrap>
+    <ion-thumbnail item-start>
+        <img [src]="item.product.images[0].src">
+    </ion-thumbnail>
+    <h2 style="font-size: 1.9rem; line-height: 2.8rem">{{ item.product.name }}</h2>
+    <h2><b>Price: &nbsp;&nbsp;&nbsp;{{ item.product.price | currency:'USD':'symbol' }} </b></h2>
+    <h2><b>Quantity: &nbsp;&nbsp;&nbsp; {{ item.quantity }}</b></h2>
+    <ng-container> 
+        <button ion-button icon-only  (tap)="decrementItem()"  color="light"  style="width: 25px; height: 25px; margin:5px 30px 5px 50px">
+            <ion-icon color="danger" name="remove"></ion-icon>
+        </button>
+        <button ion-button icon-only  (tap)="incrementItem()"  color="light"  style="width: 25px; height: 25px">
+            <ion-icon color="primary" name="add"></ion-icon>
+        </button>
+        <button ion-button full round (tap)="removeItem()" color="light">
+            Remove Item
+        </button>
+    </ng-container>
+    <!-- <ion-note item-left>{{ item.quantity }}</ion-note> -->
+</ion-item>

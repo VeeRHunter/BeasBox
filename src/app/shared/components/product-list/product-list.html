@@ -1,0 +1,10 @@
+<button 
+    ion-item 
+    (click)="showProductDetails(product)">
+    <ion-thumbnail item-left>
+        <img [src]="product.images[0].src" [alt]="product.name" />
+    </ion-thumbnail>
+    <h2>{{ product.name }}</h2>
+    <h3 [innerHTML]="product.short_description"></h3>
+    <p [innerHTML]="product.price | currency:'USD':'symbol'"></p>
+</button>

@@ -1,0 +1,57 @@
+<!-- color="bees" -->
+<ion-toolbar no-padding no-border>
+      <ion-searchbar
+        placeholder="Search"
+        [showCancelButton]="false"
+        [(ngModel)]="myQuery" 
+        (ionInput)="onModifySearch()"
+        (ionCancel)="onCancelSearch()">
+      </ion-searchbar> 
+</ion-toolbar>
+
+  
+  <!-- LIST-VIEW / GRID-VIEW -->
+  <!-- <ion-toolbar no-border ion-row align-items-center>
+      <ion-buttons 
+        *ngIf="selectedView === 'grid'"
+        ion-col 
+        align-self-center 
+        left>
+        <button 
+          ion-button 
+          icon-only 
+          [disabled]="curSize === 0" 
+          (click)="onDecreaseGrid()">
+          <ion-icon name="remove"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-segment 
+        [(ngModel)]="selectedView"
+        ion-col
+        align-self-center
+        no-border>
+    
+          <ion-segment-button value="list" (ionSelect)="onViewChange()">
+            <ion-icon name="list"></ion-icon>
+          </ion-segment-button>  
+    
+          <ion-segment-button value="grid" (ionSelect)="onViewChange()">
+            <ion-icon name="grid"></ion-icon>
+          </ion-segment-button>
+    
+      </ion-segment>
+      <ion-buttons 
+        *ngIf="selectedView === 'grid'"
+        ion-col 
+        align-self-center 
+        right>
+        <button 
+          ion-button 
+          icon-only 
+          [disabled]="curSize === 2"
+          (click)="onIncreaseGrid()">
+          <ion-icon name="add"></ion-icon>
+        </button>
+      </ion-buttons>
+  </ion-toolbar> -->
+

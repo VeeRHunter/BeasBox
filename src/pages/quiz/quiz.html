@@ -1,0 +1,285 @@
+<ion-header>
+  <!-- <nav-bar>
+  </nav-bar> -->
+</ion-header>
+
+<ion-content>
+    <ng-container class="new">
+        <div class="bg">
+            <ng-container [ngSwitch]="curSlide">
+                <img src="assets/imgs/bg3.png" *ngSwitchCase="0">
+                <img src="assets/imgs/bg4.png" *ngSwitchCase="1">
+                <img src="assets/imgs/bg5.png" *ngSwitchCase="2">
+                <img src="assets/imgs/bg3.png" *ngSwitchCase="3">
+                <img src="assets/imgs/bg4.png" *ngSwitchCase="4">
+                <img src="assets/imgs/bg5.png" *ngSwitchCase="5">
+                <img src="assets/imgs/bg3.png" *ngSwitchCase="6">
+                <img src="assets/imgs/bg4.png" *ngSwitchCase="7">
+                <img src="assets/imgs/bg5.png" *ngSwitchCase="8">
+            </ng-container>
+            <p class="title">PERSONALIZED<br>
+            ACCOUNT</p>
+            <p class="subtitle" *ngIf="quiz">Question {{curSlide+1}} of {{curLength}}</p>
+        </div> 
+        <ion-slides #quiz (ionSlideDidChange)="slideChanged()">
+            <!-- gender -->
+            <ion-slide text-wrap>
+                <div class="container" padding-horizontal>
+                    <h3><b>What is your GENDER?</b></h3>
+                    <button full ion-button text-center class="option" (tap)="setGender(0)">
+                        <!-- <img class="female" src="assets/imgs/female.png"> -->
+                        <ion-icon name="woman" large></ion-icon>
+                        <label>FEMALE</label>
+                    </button>
+                    <button full ion-button text-center class="option"  (tap)="setGender(1)">
+                        <!-- <img class="male" src="assets/imgs/male.png"> -->
+                        <ion-icon name="man" large></ion-icon>
+                        <label>MALE</label>
+                    </button>
+                    <button full ion-button text-center class="option"  (tap)="setGender(2)">
+                        <img class="other" src="assets/imgs/other.png">
+                        <label>OTHER</label> 
+                    </button> 
+                    <br>  
+                    <ion-grid class="grid" no-padding>
+                        <ion-row class="row">
+                          <ion-col class="disclaimer" col>
+                            You can always skip a<br>question or answer it later<br>in your ACCOUNT SETTINGS
+                          </ion-col>
+                          <ion-col col>
+                            <button class="gradient-bt" full ion-button (tap)="onNextSlide()">SKIP QUESTION</button>
+                          </ion-col>
+                        </ion-row>
+                    </ion-grid>             
+                </div>
+            </ion-slide>
+            <!-- status -->
+            <ion-slide text-wrap>
+              <div class="container" padding-horizontal>
+                  <h3><b>What is your RELATIONSHIP STATUS?</b></h3>
+                  <button full ion-button text-center class="option" (tap)="setStatus(0); onNextSlide();">
+                      <!-- <img class="female" src="assets/imgs/female.png"> -->
+                      <ion-icon name="man" large></ion-icon>
+                      <label>SINGLE</label>
+                  </button>
+                  <button full ion-button text-center class="option"  (tap)="setStatus(1); onNextSlide();">
+                      <img class="other" src="assets/imgs/other.png">
+                      <label>MARRIED</label> 
+                  </button>
+                  <button full ion-button text-center class="option"  (tap)="setStatus(2); onNextSlide();">
+                        <!-- <img class="male" src="assets/imgs/male.png"> -->
+                      <!-- <ion-icon name="contacts" large></ion-icon> -->
+                        <div>                      
+                            <ion-icon name="man" large></ion-icon>
+                            <ion-icon name="woman" large></ion-icon>
+                        </div>
+                        <label>RELATIONSHIP</label> 
+                  </button> 
+                  <br>
+                  <ion-grid class="grid" no-padding>
+                      <ion-row class="row">
+                        <ion-col class="disclaimer" col>
+                          You can always skip a<br>question or answer it later<br>in your ACCOUNT SETTINGS
+                        </ion-col>
+                        <ion-col col>
+                          <button class="gradient-bt" full ion-button (tap)="onNextSlide()">SKIP QUESTION</button>
+                        </ion-col>
+                      </ion-row>
+                  </ion-grid>             
+              </div>
+            </ion-slide>
+            <!-- anniversary -->
+            <!-- <ion-slide text-wrap *ngIf="myStatus == 'married' || myStatus == 'relationship'">
+                <div class="container" padding-horizontal>
+                    <h3><b>When is your Anniversary?</b></h3>
+                    <ion-list>
+                        <ion-item>
+                            <ion-label floating>Add your anniversary</ion-label>
+                            <ion-datetime
+                                [(ngModel)]="myRelationAnniversary"
+                                (ionChange)="onNextSlide()"
+                                pickerFormat="MMM, DD, YYYY" 
+                                displayFormat="MMM, DD, YYYY" 
+                                min="1950">
+                            </ion-datetime>
+                        </ion-item>
+                        <br>
+                        <button ion-button round (tap)="onNextSlide()" full>Next</button>
+                    </ion-list>
+                    <br>
+                    <ion-grid class="grid" no-padding>
+                        <ion-row class="row">
+                            <ion-col class="disclaimer" col>
+                            You can always skip a<br>question or answer it later<br>in your ACCOUNT SETTINGS
+                            </ion-col>
+                            <ion-col col>
+                            <button class="gradient-bt" full ion-button (tap)="onNextSlide()">SKIP QUESTION</button>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </div>
+            </ion-slide> -->
+            <!-- Contact -->
+            <ion-slide text-wrap>
+                <div class="container" style="margin-top: 10px;">
+                    <ion-list inset>
+                        <ion-item no-lines>
+                            <h3><b>Contact Information</b></h3>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label floating>First Name *</ion-label>
+                            <ion-input type="text" [(ngModel)]="myBillingAddress.first_name" ></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label floating>Last Name *</ion-label>
+                            <ion-input type="text" [(ngModel)]="myBillingAddress.last_name" ></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label floating>Address</ion-label>
+                            <ion-input type="text" [(ngModel)]="myBillingAddress.address_1" ></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label floating>City</ion-label>
+                            <ion-input type="text" [(ngModel)]="myBillingAddress.city" ></ion-input>
+                        </ion-item>
+                        <!-- <ion-item>
+                            <ion-label floating>State</ion-label>
+                            <ion-input type="text" [(ngModel)]="myBillingAddress.state" ></ion-input>
+                        </ion-item> -->
+                        <ion-item>
+                            <ion-label style="color: #f53d3d">STATE *</ion-label>
+                            <ion-select [(ngModel)]="myBillingAddress.state"  >
+                                <ion-option [value]="s.code" *ngFor="let s of stateList">{{s.name}}</ion-option>
+                            </ion-select>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label floating>Zip Code</ion-label>
+                            <ion-input type="number" [(ngModel)]="myBillingAddress.postcode" ></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label floating>Phone Number</ion-label>
+                            <ion-input type="number" [(ngModel)]="myBillingAddress.phone" ></ion-input>
+                        </ion-item>
+                        <br>
+                        <button ion-button round (tap)="onNextSlide()" [disabled]="checkInvalidate()" full>Next</button>
+                    </ion-list>
+                    <br>
+                    <ion-grid class="grid" padding-horizontal>
+                        <ion-row class="row">
+                          <ion-col class="disclaimer" col>
+                            You can always skip a<br>question or answer it later<br>in your ACCOUNT SETTINGS
+                          </ion-col>
+                          <ion-col col>
+                            <button class="gradient-bt" full ion-button (tap)="onNextSlide()">SKIP QUESTION</button>
+                          </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </div>
+            </ion-slide>
+            <!-- birthday -->
+            <ion-slide text-wrap>
+                <div class="container" padding-horizontal>
+                    <h3><b>When is your PARTNER'S BIRTHDAY?</b></h3>
+                    <ion-list>
+                        <ion-item>
+                          <ion-label floating>Select date</ion-label>
+                          <ion-datetime
+                            [(ngModel)]="myPartnerBirthday" 
+                            pickerFormat="MMM, DD, YYYY" 
+                            displayFormat="MMM, DD, YYYY" 
+                            min="1900">
+                          </ion-datetime>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label floating>Add your anniversary</ion-label>
+                            <ion-datetime
+                                [(ngModel)]="myPartnerAnniversary" 
+                                pickerFormat="MMM, DD, YYYY" 
+                                displayFormat="MMM, DD, YYYY" 
+                                min="1950">
+                            </ion-datetime>
+                        </ion-item>
+                        <br>
+                        <button ion-button round (tap)="onNextSlide()" full>Next</button>
+                    </ion-list>
+                    <br>
+                    <ion-grid class="grid" no-padding>
+                        <ion-row class="row">
+                          <ion-col class="disclaimer" col>
+                            You can always skip a<br>question or answer it later<br>in your ACCOUNT SETTINGS
+                          </ion-col>
+                          <ion-col col>
+                            <button class="gradient-bt" full ion-button (tap)="onNextSlide()">SKIP QUESTION</button>
+                          </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </div>
+            </ion-slide>
+            <ion-slide text-wrap>
+                <div class="container" padding-horizontal>
+                    <h3><b>Add Your Special Days</b></h3>
+                    <h6>Just add: Dog’s Birthday, Administrative Assistant Day, etc.</h6>
+                    <ion-list>
+                        <ion-item>
+                            Special Days
+                            <button ion-button outline item-end (tap)="AddDay()">Add</button>
+                            <button ion-button outline item-end (tap)="CancelDay()">Cancel</button>
+                        </ion-item>
+                        <ng-container *ngFor="let d of mySpecialDays; let i = index">
+                            <br>
+                            <ion-item >
+                                <ion-datetime
+                                    [(ngModel)]="mySpecialDays[i].day" 
+                                    placeholder="Enter Special Date"
+                                    pickerFormat="MMM, DD, YYYY"
+                                    displayFormat="MMM, DD, YYYY"
+                                    min="2018">
+                                </ion-datetime>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input item-right [(ngModel)]="mySpecialDays[i].name" placeholder="Name"></ion-input>
+                            </ion-item>                              
+                        </ng-container>
+                        <br>
+                        <button ion-button round (tap)="onNextSlide()" full>Next</button>
+                    </ion-list>
+                    <br>
+                    <ion-grid class="grid" no-padding>
+                        <ion-row class="row">
+                            <ion-col class="disclaimer" col>
+                            You can always skip a<br>question or answer it later<br>in your ACCOUNT SETTINGS
+                            </ion-col>
+                            <ion-col col>
+                            <button class="gradient-bt" full ion-button (tap)="onNextSlide()">SKIP QUESTION</button>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </div>
+            </ion-slide>
+            <!-- additional -->
+            <ion-slide text-wrap>
+                <div class="container" padding-horizontal>
+                    <h3><b>Anything else you like to us know?</b></h3>
+                    <h6>The more you can tell us the better your gifts will be! I love Avocados, boho rugs, I like the color pink, etc</h6>
+                    <ion-list >
+                        <ion-item style="border: 0.55px solid #c8c7cc !important; padding-left: 10px;">
+                          <ion-textarea item-right [(ngModel)]="myAdditional" placeholder="The more you can tell us the better your gifts will be! I love Avocados, boho rugs, I like the color pink, etc."></ion-textarea>
+                        </ion-item>                          
+                    </ion-list>
+                    <button ion-button round (tap)="saveMyProfile()" full>SAVE MY PROFILE</button>
+                    <br>
+                    <ion-grid class="grid" no-padding>
+                        <ion-row class="row">
+                        <ion-col class="disclaimer" col>
+                            You can always skip a<br>question or answer it later<br>in your ACCOUNT SETTINGS
+                        </ion-col>
+                        <ion-col col>
+                            <button class="gradient-bt" full ion-button (tap)="saveMyProfile()">SKIP QUESTION</button>
+                        </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </div>
+            </ion-slide>
+        </ion-slides>
+    </ng-container>
+</ion-content>

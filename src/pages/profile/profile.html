@@ -1,0 +1,226 @@
+<ion-header>
+  <!-- <ion-navbar>
+    <ion-title>Profile</ion-title>
+  </ion-navbar> -->
+</ion-header>
+
+
+<ion-content>
+    <div class="back-bt" (tap)="goBack()"><!-- navPop -->          
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+        BACK
+    </div>
+    <div class="cart-bt" (click)="onShowCart()">
+        <ion-icon ios="ios-cart-outline" md="md-cart"></ion-icon>
+    </div>
+    <div class="menu-bt" menuToggle="right">
+        <!-- <img src="assets/imgs/menu-bt.jpg"> -->
+        <ion-icon name="menu"></ion-icon>
+    </div>
+    <div class="bg">
+        <!-- bg-cart2.jpg -->
+        <img src="assets/imgs/bg-red.svg">
+        <p class="title"> {{usernameObservable | async}}</p>
+        <p class="subtitle" *ngIf="mode=='view'" (tap) = "editProfile()">EDIT PROFILE</p>
+        <p class="subtitle" *ngIf="mode=='edit'" (tap) = "saveProfile()">SAVE PROFILE</p>
+    </div> 
+
+    <ng-container *ngIf="mode=='view'">
+        <div class="container" style="margin-top: 10px;">
+            <!-- <h4 padding-horizontal><b>CONTACT INFORMATION</b></h4> -->
+            <ion-list inset>
+                <!-- <ion-item no-lines style="border-bottom: none !important">
+                    <h2><b>Contact Information</b></h2>
+                </ion-item> -->
+                <ion-item>
+                    <ion-label floating>First Name</ion-label>
+                    <ion-input type="text" value="{{ appUser?.billingAddress?.first_name}}" readonly></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label floating>Last Name</ion-label>
+                    <ion-input type="text" value="{{ appUser?.billingAddress?.last_name}}" readonly></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label floating>Address</ion-label>
+                    <ion-input type="text" value="{{ appUser?.billingAddress?.address_1}}" readonly></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label floating>City</ion-label>
+                    <ion-input type="text" value="{{ appUser?.billingAddress?.city}}" readonly></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label floating>State</ion-label>
+                    <ion-input type="text" value="{{ appUser?.billingAddress?.state}}" readonly></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label floating>Zip Code</ion-label>
+                    <ion-input type="text" value="{{ appUser?.billingAddress?.postcode}}" readonly></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label floating>Phone</ion-label>
+                    <ion-input type="text" value="{{ appUser?.billingAddress?.phone}}" readonly></ion-input>
+                </ion-item>
+                <!-- <br> -->
+                <!-- <button ion-button round (tap)="onNextSlide()" full>Next</button> -->
+            </ion-list>
+        </div>        
+    </ng-container>
+    <ng-container *ngIf="mode=='edit'">
+        <div class="container" style="margin-top: 20px;">
+            <h4 padding-horizontal style="font-size: 2rem;"><b>CONTACT INFORMATION</b></h4>
+            <ion-list inset text-wrap>
+                <!-- <ion-item no-lines style="border-bottom: none !important">
+                    <h2><b>Contact Information</b></h2>
+                </ion-item> -->
+                <ion-item>
+                    <ion-label fixed>First Name</ion-label>
+                    <ion-input type="text" [(ngModel)]="editUser.billingAddress.first_name"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label fixed>Last Name</ion-label>
+                    <ion-input type="text" [(ngModel)]="editUser.billingAddress.last_name"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label fixed>Address</ion-label>
+                    <ion-input type="text" [(ngModel)]="editUser.billingAddress.address_1"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label fixed>City</ion-label>
+                    <ion-input type="text" [(ngModel)]="editUser.billingAddress.city"></ion-input>
+                </ion-item>
+                <!-- <ion-item>
+                    <ion-label fixed>State</ion-label>
+                    <ion-input type="text" [(ngModel)]="editUser.billingAddress.state"></ion-input>
+                </ion-item> -->
+                <ion-item>
+                    <ion-label style="color: #f53d3d">STATE *</ion-label>
+                    <ion-select  [(ngModel)]="editUser.billingAddress.state">
+                        <ion-option [value]="s.code" *ngFor="let s of stateList">{{s.name}}</ion-option>
+                    </ion-select>
+                </ion-item>
+                <ion-item>
+                    <ion-label fixed>Zip Code</ion-label>
+                    <ion-input type="text" [(ngModel)]="editUser.billingAddress.postcode"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label fixed>Phone</ion-label>
+                    <ion-input type="text" [(ngModel)]="editUser.billingAddress.phone"></ion-input>
+                </ion-item>
+                <!-- <br> -->
+                <!-- <button ion-button round (tap)="onNextSlide()" full>Next</button> -->
+            </ion-list>
+            <br>
+            <h4 padding-horizontal><b>PERSONALIZED QUESTIONS</b></h4>
+            <ion-segment [(ngModel)]="editUser.gender" padding>
+                <ion-segment-button value="female">
+                    FEMALE
+                </ion-segment-button>
+                <ion-segment-button value="male">
+                    MALE
+                </ion-segment-button>
+                <ion-segment-button value="other">
+                    OTHER
+                </ion-segment-button>
+            </ion-segment>
+            <ion-segment [(ngModel)]="editUser.status" padding>
+                <ion-segment-button value="single">
+                    SINGLE
+                </ion-segment-button>
+                <ion-segment-button value="married">
+                    MARRIED
+                </ion-segment-button>
+                <ion-segment-button value="relationship">
+                    RELATIONSHIP
+                </ion-segment-button>
+            </ion-segment>
+            <ion-list inset text-wrap  *ngIf="editUser.status == 'married' || editUser.status == 'relationship'">
+                <ion-item>
+                    <ion-label Fixed style="font-size: 1.6rem;">Anniversary</ion-label>
+                    <ion-datetime
+                        [(ngModel)]="editUser.relationAnniversary"
+                        pickerFormat="MMM, DD, YYYY" 
+                        displayFormat="MMM, DD, YYYY" 
+                        min="1950">
+                    </ion-datetime>
+                </ion-item>
+            </ion-list>
+            <br>
+            <ion-list inset text-wrap >
+                <ion-item no-lines style="border-bottom: none !important">
+                    <h2><b>PARTNER</b></h2>
+                </ion-item>
+                <ion-item>
+                    <ion-label Fixed>Birthday</ion-label>
+                    <ion-datetime
+                    [(ngModel)]="editUser.partnerBirthday" 
+                    pickerFormat="MMM, DD, YYYY" 
+                    displayFormat="MMM, DD, YYYY" 
+                    min="1900">
+                    </ion-datetime>
+                </ion-item>
+                <ion-item>
+                    <ion-label Fixed style="font-size: 1.6rem;">Anniversary</ion-label>
+                    <ion-datetime
+                        [(ngModel)]="editUser.partnerAnniversary" 
+                        pickerFormat="MMM, DD, YYYY" 
+                        displayFormat="MMM, DD, YYYY" 
+                        min="1950">
+                    </ion-datetime>
+                </ion-item>
+            </ion-list>
+            <br>
+            <ion-list inset text-wrap>
+                <ion-item no-lines style="border-bottom: none !important">
+                    <h2><b>SPECIAL DAY</b></h2>
+                    <button ion-button outline item-end (tap)="CancelDay()" icon-only style="width:80px"><ion-icon name="trash"></ion-icon></button>
+                </ion-item>
+                <ng-container *ngFor="let d of editUser.specialDays; let i = index">
+                    <br>
+                    <ion-item>
+                        <ion-label fixed>Date</ion-label>
+                        <ion-datetime
+                            [(ngModel)]="editUser.specialDays[i].day" 
+                            pickerFormat="MMM, DD, YYYY"
+                            displayFormat="MMM, DD, YYYY"
+                            min="2018">
+                        </ion-datetime>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Date Type</ion-label>
+                        <ion-select [(ngModel)]="editUser.specialDays[i].type">
+                            <ion-option value="annivasary">Annivasary</ion-option>
+                            <ion-option value="other">Other</ion-option>
+                        </ion-select>
+                    </ion-item>
+                    <ion-item class="specialName">
+                        <ion-label fixed>Name</ion-label>
+                        <ion-input item-right [(ngModel)]="editUser.specialDays[i].name"></ion-input>
+                    </ion-item>                              
+                </ng-container>
+
+                <br><br>
+                <ion-item no-lines style="border-bottom: none !important">
+                    <h2><b>ADD SPECIAL DAY</b></h2>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Date Type</ion-label>
+                    <ion-select [(ngModel)]="newSpecialType">
+                        <ion-option value="annivasary">Annivasary</ion-option>
+                        <ion-option value="other">Other</ion-option>
+                    </ion-select>
+                </ion-item>
+                <ion-item class="specialName">
+                    <ion-label>Name</ion-label>
+                    <ion-input item-end [(ngModel)]="newSpecialName"> </ion-input>
+                </ion-item>     
+                <ion-item>
+                    <ion-label fixed>Date</ion-label>
+                    <ion-datetime item-end [(ngModel)]="newSpecialDay"> </ion-datetime>
+                </ion-item>     
+                <ion-item text-center>
+                    <button ion-button outline item-center (tap)="AddDay()" icon-only style="width:100px"><ion-icon name="add-circle"></ion-icon></button>
+                </ion-item>           
+            </ion-list>
+        </div>        
+    </ng-container>
+</ion-content>

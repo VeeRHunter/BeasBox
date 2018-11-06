@@ -1,0 +1,97 @@
+page-profile {
+    .back-bt {
+        position: absolute;
+        top: 20px;
+        z-index: 100;
+        width: 100px;
+        height: 24px;
+        background: #FFF;
+        cursor: pointer;
+        font-weight: bold;
+        text-align: right;
+        padding: 4px 10px;
+    }
+    .cart-bt {
+        position: absolute;
+        top: 7px;
+        right: 70px;
+        z-index: 100;
+        width: 40px;
+        height: 40px;
+        background: #FFF;
+        cursor: pointer;
+        text-align: center;
+        border-radius: 35px;
+        ion-icon {
+            font-size: 25px;
+            margin-top: 8px;
+            color: color($colors, primary);
+        }
+    }
+    .menu-bt {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 100;
+        width: 50px;
+        height: 50px;
+        background: #FFF;
+        cursor: pointer;
+
+        font-size: 2.8rem;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .menu-bt img {
+        width: 100%;
+        height: auto;
+    }
+    .bg {
+        font-weight: bold;
+        width: 100%;
+        height: 95px;
+    }
+    .bg img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: -1;
+    }
+    .bg p.title {
+        color: #FFF;
+        font-size: 2.2rem;
+        padding-left: 30px;
+        margin: 60px 0 5px 0;
+    }    
+
+    .bg p.subtitle {
+        color: #FFF;
+        font-size: 1.2rem;
+        padding-left: 30px;
+        margin: 0;
+    }    
+
+    ion-input, ion-datetime {
+        font-size: 18px;
+    }
+    .list-md[inset] .item-input, .list-md[inset] .item-md {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .specialName .label-ios + ion-input .text-input, 
+    .specialName .label-ios + ion-textarea .text-input, 
+    .specialName .label-ios + .input + .cloned-input {
+        margin-left: 70px !important;
+    }
+
+    .item-ios .item-button {
+        height: 28px;
+    }
+    .list > .item-block:last-child, .list > .item-wrapper:last-child .item-block {
+        border-bottom: 0.55px solid #c8c7cc !important;
+    }
+}

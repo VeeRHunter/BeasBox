@@ -1,0 +1,12 @@
+<ion-card>
+    <ion-card-header text-center>
+        {{ product.name }}
+    </ion-card-header>
+
+    <ion-card-content text-center>
+        <ion-thumbnail>
+            <img [src]="product.images[0].src" />
+            <ion-label [innerHTML]="product.price | currency:'USD':'symbol'"></ion-label>
+        </ion-thumbnail>
+    </ion-card-content>
+</ion-card>
