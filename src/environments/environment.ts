@@ -17,14 +17,14 @@ export const environment = {
         storageBucket: "mybeesbox-33b9c.appspot.com",
         messagingSenderId: "644512892563"
     },
-    
+
     wooCommerceApiConfig: {
-        url:             'https://mybeesbox.com',
-        consumerKey:     'ck_fe40ec88cb29ce1f760c915992b378284ebbce8a',
-        consumerSecret:  'cs_c2ed276e017c3ea02efb370b5fd261496506d82b',
-        wpAPI:           true,
-        version:         'wc/v2',
-        verifySsl:       true,
+        url: 'https://mybeesbox.com',
+        consumerKey: 'ck_fe40ec88cb29ce1f760c915992b378284ebbce8a',
+        consumerSecret: 'cs_c2ed276e017c3ea02efb370b5fd261496506d82b',
+        wpAPI: true,
+        version: 'wc/v2',
+        verifySsl: true,
         queryStringAuth: true
     }
 };

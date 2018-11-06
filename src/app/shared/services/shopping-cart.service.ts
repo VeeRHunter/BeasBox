@@ -1,11 +1,11 @@
-import { Injectable }      from '@angular/core';
+import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireObject, AngularFireList } from 'angularfire2/database';
 
-import { AppUser }         from '../models/app-user.model';
-import { Product }         from '../models/product.model';
-import { Cart }            from '../models/cart.model';
-import { Item }            from '../models/item.model'; 
-import { Storage }         from '@ionic/storage';
+import { AppUser } from '../models/app-user.model';
+import { Product } from '../models/product.model';
+import { Cart } from '../models/cart.model';
+import { Item } from '../models/item.model';
+import { Storage } from '@ionic/storage';
 
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/map';
@@ -15,19 +15,19 @@ export class ShoppingCartService {
 
     cart: Cart = new Cart();
     constructor(public storage: Storage,
-            private afDb: AngularFireDatabase,
-            // private authService: UserAuthService
-        ) {
+        private afDb: AngularFireDatabase,
+        // private authService: UserAuthService
+    ) {
         this.createOrLoadCart();
     }
 
     public async createOrLoadCart() {
         let c = await this.getCartFromStorage()
-        if(c == null) {
+        if (c == null) {
             this.cart = new Cart();
             await this.saveCartToStorage();
             return await this.saveCartToFirebase();
-        } else 
+        } else
             this.cart = c
     }
 
@@ -58,7 +58,7 @@ export class ShoppingCartService {
                 this.cart.items.push(newItem);
             }
         } else {
-        //if items already exists
+            //if items already exists
             let isNew = true
             let existingIndex = null;
             for (let myItem of this.cart.items) {
@@ -70,7 +70,7 @@ export class ShoppingCartService {
                     isNew = false
                     existingIndex = index
                     break;
-                } 
+                }
             }
             //if product is already in cart
             if (!isNew) {
@@ -103,7 +103,7 @@ export class ShoppingCartService {
         this.cart.items = this.cart.items.filter((i: Item) => {
             console.log(i)
             console.log(item)
-            return i.product.id != item.product.id 
+            return i.product.id != item.product.id
         })
         await this.saveCartToStorage()
         return this.cart;
@@ -127,6 +127,6 @@ export class ShoppingCartService {
 
     public emptyCart() {
         this.cart.items = [];
-        this.saveCartToStorage();  
-    }    
+        this.saveCartToStorage();
+    }
 }

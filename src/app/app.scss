@@ -1,6 +1,4 @@
 // http://ionicframework.com/docs/theming/
-
-
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
@@ -14,20 +12,16 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
-
-
 @font-face {
     font-family: 'BirdAndThorn';
     font-style: normal;
-    src: url('../assets/fonts/BirdAndThorn.ttf') format('truetype'),
-         url('../assets/fonts/BirdAndThorn.otf') format('opentype');
+    color: black !important;
+    src: url('../assets/fonts/BirdAndThorn.ttf') format('truetype'), url('../assets/fonts/BirdAndThorn.otf') format('opentype');
 }
-
 @font-face {
     font-family: 'GeorgiaScript';
     font-style: normal;
-    src: url('../assets/fonts/GeorgiaScript.ttf') format('truetype'),
-        url('../assets/fonts/GeorgiaScript.otf') format('opentype');
+    src: url('../assets/fonts/GeorgiaScript.ttf') format('truetype'), url('../assets/fonts/GeorgiaScript.otf') format('opentype');
 }
 
 @font-face {
@@ -42,32 +36,46 @@
     src: url('../assets/fonts/NeueEinstellung-Bold.woff2') format('woff'),
 }
 
-body, span, p, div, .selectbox select  {
-    font-family: "NeueEinstellung-Bold";
-}
-button, input, optgroup, select, textarea {
+body,
+span,
+p,
+div,
+.selectbox select {
     font-family: "NeueEinstellung-Bold";
 }
 
-.list-ios > .item-block:last-child, .list-ios > .item-wrapper:last-child .item-block {
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: "NeueEinstellung-Bold";
+}
+
+.list-ios>.item-block:last-child,
+.list-ios>.item-wrapper:last-child .item-block {
     border-bottom: 0.55px solid #c8c7cc;
 }
-.list-ios > .item-block:first-child {
+
+.list-ios>.item-block:first-child {
     border-top: none !important;
 }
 
-
-.item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner, .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+.item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner,
+.item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
     box-shadow: none !important;
     border-bottom-color: #dedede !important;
 }
 
-.list-md .item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child, .list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child {
+.list-md .item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child,
+.list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child {
     box-shadow: none !important;
     border-bottom-color: #dedede !important;
 }
 
-ion-input, ion-textarea, ion-select {
+ion-input,
+ion-textarea,
+ion-select {
     font-size: 1.5rem;
 }
 
@@ -75,11 +83,19 @@ ion-input, ion-textarea, ion-select {
     font-size: 4.2vw;
 }
 
-ion-content .first-line, ion-content .second-line, ion-content .title,  {
+ion-content .first-line,
+ion-content .second-line,
+ion-content .title,
+    {
     font-family: "GeorgiaScript";
 }
 
-page-home ion-content .first-line, page-home ion-content .second-line, ion-content .title,
-page-login ion-content .first-line, page-home ion-content .second-line, ion-content .title,  {
+page-home ion-content .first-line,
+page-home ion-content .second-line,
+ion-content .title,
+page-login ion-content .first-line,
+page-home ion-content .second-line,
+ion-content .title,
+    {
     font-family: "NeueEinstellung-Bold";
 }

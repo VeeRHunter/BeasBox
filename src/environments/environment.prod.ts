@@ -8,7 +8,7 @@ export const environment = {
     //     storageBucket: "beesboxapp.appspot.com",
     //     messagingSenderId: "572716651774"
     // },
-    
+
     firebaseConfig: {
         apiKey: "AIzaSyCINB6DYUVN7aj8Jto6p_b3p3ul4oRxCfY",
         authDomain: "mybeesbox-33b9c.firebaseapp.com",
@@ -19,12 +19,12 @@ export const environment = {
     },
 
     wooCommerceApiConfig: {
-      url:             'https://mybeesbox.com',
-      consumerKey:     'ck_fe40ec88cb29ce1f760c915992b378284ebbce8a',
-      consumerSecret:  'cs_c2ed276e017c3ea02efb370b5fd261496506d82b',
-      wpAPI:           true,
-      version:         'wc/v2',
-      verifySsl:       true,
-      queryStringAuth: true
+        url: 'https://mybeesbox.com',
+        consumerKey: 'ck_fe40ec88cb29ce1f760c915992b378284ebbce8a',
+        consumerSecret: 'cs_c2ed276e017c3ea02efb370b5fd261496506d82b',
+        wpAPI: true,
+        version: 'wc/v2',
+        verifySsl: true,
+        queryStringAuth: true
     }
 };

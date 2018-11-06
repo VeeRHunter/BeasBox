@@ -36,65 +36,76 @@
     </ion-item>
   </ion-list> -->
   <div class="cart-bt" (tap)="onShowCart()">
-      <ion-icon ios="ios-cart-outline" md="md-cart"></ion-icon>
+    <ion-icon ios="ios-cart-outline" md="md-cart"></ion-icon>
   </div>
   <div class="menu-bt" menuToggle="right">
-      <!-- <img src="assets/imgs/menu-bt.jpg"> -->
-      <ion-icon name="menu"></ion-icon>
+    <!-- <img src="assets/imgs/menu-bt.jpg"> -->
+    <ion-icon name="menu"></ion-icon>
   </div>
   <div class="first-block">
-      <div class="mask"></div>
-      <div class="image-bg"></div>
-      <div class="first-line" style="font-family: 'BirdAndThorn'">
-        <span style="font-family: 'BirdAndThorn'; font-size: 35px">W</span>ELCOME !</div>
-      <!-- <div class="second-line">{{usernameObservable | async}}!</div> -->
-      <!-- <div class="third-line">
+    <div class="mask"></div>
+    <div class="image-bg"></div>
+    <div class="first-line" style="font-family: 'BirdAndThorn'">
+      <span style="font-family: 'BirdAndThorn'; font-size: 35px">W</span>ELCOME !</div>
+    <!-- <div class="second-line">{{usernameObservable | async}}!</div> -->
+    <!-- <div class="third-line">
         Your hubby’s birthday is<br>
         in 5 days. Get him a<br>
         15% off bundle!
       </div> -->
   </div>
   <div class="second-block" (tap)="navPreCurated()">
-      <div class="block-title">
-        PRE-CURATED BOXES
-      </div>
-      <div class="mask"></div>
-      <div class="image-bg"></div>
-      <!-- <div class="first-line" style="font-family: 'GeorgiaScript'">SHOP PRE-CURATED GIFTS <ion-icon ios="ios-arrow-forward" md="md-arrow-forward" role="img"></ion-icon></div> -->
+    <div class="block-title">
+      PRE-CURATED BOXES
+    </div>
+    <div class="mask"></div>
+    <div class="image-bg"></div>
+    <!-- <div class="first-line" style="font-family: 'GeorgiaScript'">SHOP PRE-CURATED GIFTS <ion-icon ios="ios-arrow-forward" md="md-arrow-forward" role="img"></ion-icon></div> -->
   </div>
   <div class="third-block" (tap)="navBundleItems()">
-      <div class="block-title">
-        BUILD A BOX
-      </div>
-      <div class="mask"></div>
-      <div class="image-bg"></div>
-      <!-- <div class="first-line" style="font-family: 'GeorgiaScript'">BUILD A GIFT <ion-icon ios="ios-arrow-forward" md="md-arrow-forward" role="img"></ion-icon></div> -->
+    <div class="block-title">
+      BUILD A BOX
+    </div>
+    <div class="mask"></div>
+    <div class="image-bg"></div>
+    <!-- <div class="first-line" style="font-family: 'GeorgiaScript'">BUILD A GIFT <ion-icon ios="ios-arrow-forward" md="md-arrow-forward" role="img"></ion-icon></div> -->
   </div>
   <div class="fourth-block gradient-bt">
-      <div class="block-title" style="font-family: 'BirdAndThorn'">
-        CAN'T FIND WHAT<br>YOU WANT?
-      </div>
-      <div class="block-subtitle">
-        Bee assured, we have answers<br>for your questions.
-      </div>
-      <button class="button-padding" full ion-button (tap)="navCustomBox()">
-        CUSTOMIZED BOXES AND FAQ
-      </button>
-      <br>
-      <ion-grid>
-        <ion-row class="row">
-          <ion-col col-12 text-center> <ion-label  color="dark">Follow Us</ion-label> </ion-col>
-          <ion-col col-4 text-center style="font-size: 3rem;">
-              <a href="http://instagram.com/mybeesbox"><ion-icon name="logo-instagram" color="dark"></ion-icon></a>  <!--Instagram-->
-          </ion-col>
-          <ion-col col-4 text-center style="font-size: 3rem;">
-              <a href="http://facebook.com/mybeesbox"><ion-icon name="logo-facebook" color="dark"></ion-icon></a><!--Facebook-->
-          </ion-col>
-          <ion-col col-4 text-center style="font-size: 3rem;">
-              <a href="http://pinterest.com/mybeesbox"><ion-icon name="logo-pinterest" color="dark"></ion-icon></a> <!--Pinterest-->
-          </ion-col>
-          
-        </ion-row>
-      </ion-grid>
+    <div class="block-title" style="font-family: 'BirdAndThorn'">
+      CAN'T FIND WHAT<br>YOU WANT?
+    </div>
+    <div class="block-subtitle">
+      Bee assured, we have answers<br>for your questions.
+    </div>
+    <button class="button-padding" full ion-button (tap)="navCustomBox()">
+      CUSTOMIZED BOXES AND FAQ
+    </button>
+    <br>
+    <ion-grid>
+      <ion-row class="row">
+        <ion-col col-12 text-center>
+          <ion-label color="dark">Follow Us</ion-label>
+        </ion-col>
+        <ion-col col-4 text-center style="font-size: 3rem;">
+          <a href="http://instagram.com/mybeesbox">
+            <ion-icon name="logo-instagram" color="dark"></ion-icon>
+          </a>
+          <!--Instagram-->
+        </ion-col>
+        <ion-col col-4 text-center style="font-size: 3rem;">
+          <a href="http://facebook.com/mybeesbox">
+            <ion-icon name="logo-facebook" color="dark"></ion-icon>
+          </a>
+          <!--Facebook-->
+        </ion-col>
+        <ion-col col-4 text-center style="font-size: 3rem;">
+          <a href="http://pinterest.com/mybeesbox">
+            <ion-icon name="logo-pinterest" color="dark"></ion-icon>
+          </a>
+          <!--Pinterest-->
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
   </div>
 </ion-content>

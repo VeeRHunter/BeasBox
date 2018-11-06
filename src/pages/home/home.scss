@@ -6,7 +6,7 @@ page-home {
         z-index: 100;
         width: 40px;
         height: 40px;
-        background: #FFF;
+        background: transparent;
         cursor: pointer;
         text-align: center;
         border-radius: 35px;
@@ -23,14 +23,14 @@ page-home {
         z-index: 100;
         width: 50px;
         height: 50px;
-        background: #FFF;
+        background: transparent;
         cursor: pointer;
         font-size: 2.8rem;
         text-align: center;
         display: flex;
         align-items: center;
         justify-content: center;
-    }      
+    }
     .first-block {
         position: relative;
         height: 35%;
@@ -46,7 +46,7 @@ page-home {
         background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(100%, rgba(0, 0, 0, 0.29)));
         background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(rgba(0, 0, 0, 0.29)));
         background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.29) 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000', GradientType=0 );
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000', GradientType=0);
     }
     .first-block .image-bg {
         height: 100%;
@@ -64,11 +64,13 @@ page-home {
         top: 20px;
         left: 20px;
         font-size: 2rem;
+        background: transparent;
         color: #000;
         padding: 0px 10px;
         height: 40px;
         font-weight: bold;
         font-size: 24px;
+        font-family: 'BirdAndThorn';
     }
     .first-block .second-line {
         position: absolute;
@@ -76,7 +78,8 @@ page-home {
         left: 20px;
         font-size: 2rem;
         color: #000;
-        background: #FFF;
+        background: transparent;
+        font-family: 'BirdAndThorn';
         padding: 5px 10px;
         height: 35px;
         font-weight: bold;
@@ -88,11 +91,11 @@ page-home {
         left: 20px;
         font-size: 1.2rem;
         color: #000;
-        background: #FFF;
+        background: transparent;
         padding: 5px 10px;
         font-weight: bold;
+        font-family: 'BirdAndThorn';
     }
-
     .second-block {
         position: relative;
         height: 20%;
@@ -126,7 +129,7 @@ page-home {
         background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(100%, rgba(0, 0, 0, 0.29)));
         background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(rgba(0, 0, 0, 0.29)));
         background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.29) 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000', GradientType=0 );
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000', GradientType=0);
     }
     .second-block .image-bg {
         height: 100%;
@@ -136,7 +139,7 @@ page-home {
         left: 0;
         z-index: -2;
         background-size: auto 100%;
-        background: url(../assets/imgs/pre.jpg) center center no-repeat;  // menu1.jpg
+        background: url(../assets/imgs/pre.jpg) center center no-repeat; // menu1.jpg
         background-size: cover;
     }
     .second-block .first-line {
@@ -146,7 +149,6 @@ page-home {
         display: table-cell;
         vertical-align: middle;
     }
-
     .third-block {
         position: relative;
         height: 20%;
@@ -181,7 +183,7 @@ page-home {
         background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(100%, rgba(0, 0, 0, 0.29)));
         background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(rgba(0, 0, 0, 0.29)));
         background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.29) 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000', GradientType=0 );
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000', GradientType=0);
     }
     .third-block .image-bg {
         height: 100%;
@@ -191,7 +193,7 @@ page-home {
         left: 0;
         z-index: -2;
         background-size: auto 100%;
-        background: url(../assets/imgs/box.jpg) center center no-repeat;  // menu2
+        background: url(../assets/imgs/box.jpg) center center no-repeat; // menu2
         background-size: cover;
     }
     .third-block .first-line {
@@ -201,7 +203,6 @@ page-home {
         display: table-cell;
         vertical-align: middle;
     }
-
     .fourth-block {
         position: relative;
         width: 100%;
@@ -211,8 +212,7 @@ page-home {
         font-size: 2rem;
     }
     .gradient-bt {
-        background: #c1c1d6;
-        // background: linear-gradient(135deg, #c1c1d6 0%, #7bbfad 100%);
+        background: #c1c1d6; // background: linear-gradient(135deg, #c1c1d6 0%, #7bbfad 100%);
         // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c1c1d6', endColorstr='#7bbfad',GradientType=1 );
         background: url(../assets/imgs/bg-olive.svg) center center no-repeat;
         background-size: cover;
@@ -226,7 +226,7 @@ page-home {
     }
     .fourth-block .block-subtitle {
         font-size: 1.2rem;
-        color: #FFF;
+        color: #000;
         height: 30px;
         font-weight: normal;
         margin-bottom: 15px;
@@ -240,5 +240,8 @@ page-home {
     }
     .fourth-block button .button-inner {
         padding-top: 5px;
+    }
+    .button-padding {
+        background: transparent !important;
     }
 }

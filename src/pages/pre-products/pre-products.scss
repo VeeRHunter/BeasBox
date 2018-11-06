@@ -5,7 +5,7 @@ page-pre-products {
         z-index: 100;
         width: 100px;
         height: 24px;
-        background: #FFF;
+        background: transparent;
         cursor: pointer;
         font-weight: bold;
         text-align: right;
@@ -18,7 +18,7 @@ page-pre-products {
         z-index: 100;
         width: 40px;
         height: 40px;
-        background: #FFF;
+        background: transparent;
         cursor: pointer;
         text-align: center;
         border-radius: 35px;
@@ -35,9 +35,8 @@ page-pre-products {
         z-index: 100;
         width: 50px;
         height: 50px;
-        background: #FFF;
+        background: transparent;
         cursor: pointer;
-
         font-size: 2.8rem;
         text-align: center;
         display: flex;
@@ -63,7 +62,7 @@ page-pre-products {
         background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(100%, rgba(0, 0, 0, 0.29)));
         background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(rgba(0, 0, 0, 0.29)));
         background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.29) 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000', GradientType=0 );
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000', GradientType=0);
     }
     .first-block img {
         width: 100%;
@@ -79,9 +78,10 @@ page-pre-products {
         left: 20px;
         font-size: 2rem;
         color: #000;
-        background: #FFF;
+        background: transparent;
         padding: 5px 10px;
         height: 32px;
+        font-family: 'BirdAndThorn';
         font-weight: bold;
     }
     .first-block .second-line {
@@ -90,8 +90,9 @@ page-pre-products {
         left: 20px;
         font-size: 2rem;
         color: #000;
-        background: #FFF;
+        background: transparent;
         padding: 5px 10px;
+        font-family: 'BirdAndThorn';
         height: 32px;
         font-weight: bold;
     }
@@ -101,9 +102,10 @@ page-pre-products {
         left: 20px;
         font-size: 1.2rem;
         color: #000;
-        background: #FFF;
+        background: transparent;
         padding: 5px 20px 5px 5px;
         height: 24px;
+        font-family: 'BirdAndThorn';
         font-weight: bold;
     }
     .second-block .title {
@@ -118,8 +120,8 @@ page-pre-products {
         padding-top: 2px;
         width: 50%;
     }
-
-    .card-md, .card-ios { 
+    .card-md,
+    .card-ios {
         box-shadow: none !important;
     }
     .card-title-md {
@@ -137,7 +139,8 @@ page-pre-products {
         border-radius: 10px;
         padding: 1px 45px;
     }
-    .searchbar-md .searchbar-search-icon, .searchbar-md .searchbar-md-cancel {
+    .searchbar-md .searchbar-search-icon,
+    .searchbar-md .searchbar-md-cancel {
         position: absolute;
         background-repeat: no-repeat;
         background-size: 20px;

@@ -1,12 +1,12 @@
-import { Component, ViewChild, OnInit }               from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 
-import { IonicPage, Nav, NavController, NavParams, AlertController, LoadingController, ToastController }      from 'ionic-angular';
+import { IonicPage, Nav, NavController, NavParams, AlertController, LoadingController, ToastController } from 'ionic-angular';
 
-import { UserAuthService }          from '../../app/shared/services/user-auth.service';
-import { DataService }        from '../../app/shared/services/data.service';
-import { HelperService }        from '../../app/shared/services/helper.service';
-import { WooCommerceService }   from '../../app/shared/services/woocommerce.service';
-import { AppUser }              from '../../app/shared/models/app-user.model';
+import { UserAuthService } from '../../app/shared/services/user-auth.service';
+import { DataService } from '../../app/shared/services/data.service';
+import { HelperService } from '../../app/shared/services/helper.service';
+import { WooCommerceService } from '../../app/shared/services/woocommerce.service';
+import { AppUser } from '../../app/shared/models/app-user.model';
 import { Category } from '../../app/shared/models/category.model';
 
 import * as firebase from 'firebase';
@@ -52,16 +52,16 @@ export class MenuPage {
     { title: 'My Cart', pageName: 'TabsPage', tabComponent: 'ShoppingCartPage', index: 1, icon: 'contacts' },
   ];
 
-  constructor(public navCtrl: NavController, 
-              public navParams: NavParams,
-              public storage: Storage,
-              private alertCtrl: AlertController,
-              private loadingCtrl: LoadingController,
-              private toastCtrl: ToastController,
-              private authService: UserAuthService,
-              private dataService: DataService,
-              private helperService: HelperService,
-              private wooService: WooCommerceService) { 
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public storage: Storage,
+    private alertCtrl: AlertController,
+    private loadingCtrl: LoadingController,
+    private toastCtrl: ToastController,
+    private authService: UserAuthService,
+    private dataService: DataService,
+    private helperService: HelperService,
+    private wooService: WooCommerceService) {
   }
 
   async ionViewWillEnter() {
@@ -70,7 +70,7 @@ export class MenuPage {
       console.log(this.appUser)
     });
     this.usernameObservable = this.authService.appUser$.map(user => {
-      if(!user) return '';
+      if (!user) return '';
       return user.billingAddress.first_name + " " + user.billingAddress.last_name
     });
     this.helperService.curPage$.subscribe((page) => this.curPage = page);
@@ -83,14 +83,14 @@ export class MenuPage {
       .subscribe((user: firebase.User) => {
         bool = (!user) ? false : true;
       });
-      return bool;
+    return bool;
   }
 
   async getCategories() {
     this.catList = await this.wooService.getAllCategories();
   }
 
-  setRoot(page: string) {    
+  setRoot(page: string) {
     this.menuRoot = page;
     this.nav.setRoot(page);
   }
@@ -150,30 +150,30 @@ export class MenuPage {
   }
 
   async navPreCurated() {
-      // this.nav.setRoot('PreCuratedPage');
-      await this.storage.set('selected_category', 'Precurated');
-      await this.storage.set('selected_subcategory', "All");
-      if (this.nav.getActiveChildNav()) {
-        this.nav.getActiveChildNav().push('PreProductsPage');
-      } else {
-        this.nav.setRoot("PreProductsPage");
-      }
+    // this.nav.setRoot('PreCuratedPage');
+    await this.storage.set('selected_category', 'Precurated');
+    await this.storage.set('selected_subcategory', "All");
+    if (this.nav.getActiveChildNav()) {
+      this.nav.getActiveChildNav().push('PreProductsPage');
+    } else {
+      this.nav.setRoot("PreProductsPage");
+    }
 
-      // let params = {};
+    // let params = {};
 
-      // // The index is equal to the order of our tabs inside tabs.ts
-      // if (page.index) {
-      //   params = { tabIndex: page.index };
-      // }
-          
-      // // The active child nav is our Tabs Navigation
-      // if (this.nav.getActiveChildNav() && page.index != undefined) {
-      //   this.nav.getActiveChildNav().select(page.index);
-      // } else {
-      //   // Tabs are not active, so reset the root page 
-      //   // In this case: moving to or from SpecialPage
-      //   this.nav.setRoot(page.pageName, params);
-      // }
+    // // The index is equal to the order of our tabs inside tabs.ts
+    // if (page.index) {
+    //   params = { tabIndex: page.index };
+    // }
+
+    // // The active child nav is our Tabs Navigation
+    // if (this.nav.getActiveChildNav() && page.index != undefined) {
+    //   this.nav.getActiveChildNav().select(page.index);
+    // } else {
+    //   // Tabs are not active, so reset the root page 
+    //   // In this case: moving to or from SpecialPage
+    //   this.nav.setRoot(page.pageName, params);
+    // }
   }
 
   async navBundleItems() {

@@ -43,7 +43,7 @@
                     MY CART
                 </button>
             </ion-list>
-            <button full ion-button (tap)="doLogout()">LOG OUT {{usernameObservable | async}}</button>
+            <button full ion-button class="logout-bt" (tap)="doLogout()">LOG OUT {{usernameObservable | async}}</button>
             <!-- showAllCategories() -->
             <!-- *ngFor="let cat of catList; let i = index" -->
             <!-- <ion-icon item-left [name]="categoryIcons[i]"></ion-icon>

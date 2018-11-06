@@ -11,16 +11,15 @@ page-menu {
         padding-bottom: 0 !important;
         min-height: 50px !important;
     }
-    .toolbar-background, .toolbar-background-md {
+    .toolbar-background,
+    .toolbar-background-md {
         background: #ffffff;
     }
-
-    .gradient-bt {
-        // background: #c1c1d6;
-        // background: linear-gradient(135deg, #c1c1d6 0%, #7bbfad 100%);
+    .user-meta.gradient-bt {
+        background: #c1c1d6; // background: linear-gradient(135deg, #c1c1d6 0%, #7bbfad 100%);
         // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c1c1d6', endColorstr='#7bbfad',GradientType=1 );
-        // background: url(../assets/imgs/bg-olive.svg) center center no-repeat;
-        // background-size: cover;
+        background: url(../assets/imgs/bg-red.svg) center center no-repeat;
+        background-size: cover;
     }
     .user-meta {
         width: 100%;
@@ -46,7 +45,7 @@ page-menu {
         padding-right: 8px;
         border-bottom: 1px solid #dedede;
     }
-    ion-content > div.scroll-content > button.option {
+    ion-content>div.scroll-content>button.option {
         position: absolute;
         bottom: 10px;
         width: 90%;
@@ -57,5 +56,10 @@ page-menu {
     }
     ion-menu ion-label {
         font-weight: bold;
+    }
+    .logout-bt {
+        background: url(../assets/imgs/bg-red.svg) center center no-repeat;
+        background-size: cover;
+        // color: black;
     }
 }

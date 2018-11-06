@@ -12,7 +12,7 @@ import * as firebase from 'firebase';
 @Injectable()
 export class UserAuthService {
     user$: Observable<firebase.User>;
-    
+
     constructor(private afAuth: AngularFireAuth, private dataService: DataService) {
         this.user$ = this.afAuth.authState;
     }
@@ -23,7 +23,7 @@ export class UserAuthService {
 
     public async loginEmail(email: string, password: string) {
         try {
-            return <LoginResponse> { result: await this.afAuth.auth.signInWithEmailAndPassword(email, password) }
+            return <LoginResponse>{ result: await this.afAuth.auth.signInWithEmailAndPassword(email, password) }
         }
         catch (error) {
             return <LoginResponse>{ error: error }
@@ -33,7 +33,7 @@ export class UserAuthService {
     public async LoginSocial(method: string) {
         let provider: firebase.auth.AuthProvider;
 
-        switch(method) {
+        switch (method) {
             case 'facebook': {
                 provider = new firebase.auth.FacebookAuthProvider();
                 break;
@@ -49,7 +49,8 @@ export class UserAuthService {
         }
 
         try {
-            return await this.afAuth.auth.signInWithPopup(provider) 
+            return <LoginResponse>{ result: await this.afAuth.auth.signInWithPopup(provider) }
+            // return await this.afAuth.auth.signInWithPopup(provider)
         }
         catch (error) {
             return <LoginResponse>{ error: error }
@@ -63,7 +64,7 @@ export class UserAuthService {
         catch (error) {
             return <LoginResponse>{ error: error }
         }
-        
+
     }
 
     public logout(): Promise<any> {
@@ -72,12 +73,12 @@ export class UserAuthService {
 
     public get appUser$(): Observable<AppUser> {
         return this.getAuthenticatedUser().switchMap((user) => {                //passes firebase.User
-            if(!user) {                                                         //or returns null
-                 return Observable.of(null);     
-            } else if ( user.email) {
+            if (!user) {                                                         //or returns null
+                return Observable.of(null);
+            } else if (user.email) {
                 return this.dataService.getAppUser(user);                       //returns appUser
             } else {
-                return Observable.of(null);   
+                return Observable.of(null);
             }
         });
     }

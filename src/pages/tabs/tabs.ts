@@ -1,18 +1,22 @@
-import { Component, 
-        OnInit, 
-        OnDestroy }            from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy
+} from '@angular/core';
 
-import { IonicPage, 
-         NavController, 
-         NavParams }           from 'ionic-angular';
-import { Storage }             from '@ionic/storage';
+import {
+  IonicPage,
+  NavController,
+  NavParams
+} from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
-import { UserAuthService }     from '../../app/shared/services/user-auth.service';
-import { HelperService }       from '../../app/shared/services/helper.service';
+import { UserAuthService } from '../../app/shared/services/user-auth.service';
+import { HelperService } from '../../app/shared/services/helper.service';
 //import { ShoppingCartService } from '../../app/shared/services/shopping-cart.service';
-import { AppUser }             from '../../app/shared/models/app-user.model';
-import { Cart }                from '../../app/shared/models/cart.model';
-import { Item }                from '../../app/shared/models/item.model';
+import { AppUser } from '../../app/shared/models/app-user.model';
+import { Cart } from '../../app/shared/models/cart.model';
+import { Item } from '../../app/shared/models/item.model';
 
 import * as firebase from 'firebase';
 
@@ -38,7 +42,7 @@ export class TabsPage {
       rootPage: 'HomePage',
       title: 'Home',
       icon: 'person'
-    }, 
+    },
     {
       rootPage: 'MyOrdersPage',
       title: 'My Order',
@@ -50,13 +54,13 @@ export class TabsPage {
     }
   ];
 
-  constructor(public navCtrl: NavController, 
-              public navParams: NavParams, 
-              private authService: UserAuthService,
-              private helperService: HelperService,
-              // private cartService: ShoppingCartService,
-              public storage: Storage) {
-                
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    private authService: UserAuthService,
+    private helperService: HelperService,
+    // private cartService: ShoppingCartService,
+    public storage: Storage) {
+
     //this.cart = this.cartService.getCart();
     //this.cartCount = this.cart.length || 0;
   }

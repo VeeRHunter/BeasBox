@@ -1,21 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm }            from '@angular/forms';
+import { NgForm } from '@angular/forms';
 
-import { App,
-         IonicPage, 
-         NavController, 
-         NavParams, 
-         LoadingController, 
-         ToastController }   from 'ionic-angular';
+import {
+  App,
+  IonicPage,
+  NavController,
+  NavParams,
+  LoadingController,
+  ToastController
+} from 'ionic-angular';
 
-import { UserAuthService }   from '../../app/shared/services/user-auth.service';
-import { AppUser }           from '../../app/shared/models/app-user.model';
+import { UserAuthService } from '../../app/shared/services/user-auth.service';
+import { AppUser } from '../../app/shared/models/app-user.model';
 
-import { Observable }        from 'rxjs/Observable';
-import { LoginResponse }     from '../../app/shared/models/login-response.model';
+import { Observable } from 'rxjs/Observable';
+import { LoginResponse } from '../../app/shared/models/login-response.model';
 
 import * as firebase from 'firebase';
-import { DataService }       from '../../app/shared/services/data.service';
+import { DataService } from '../../app/shared/services/data.service';
 
 
 @IonicPage()
@@ -40,7 +42,7 @@ export class LoginPage {
 
 
   socials: Array<{ name: string, icon: string }> = [
-    { 
+    {
       name: 'google',
       icon: 'logo-google'
     }, {
@@ -52,23 +54,23 @@ export class LoginPage {
     }
   ];
 
-  constructor(public navCtrl: NavController, 
-              public navParams: NavParams, 
-              private loadingCtrl: LoadingController,
-              private toastCtrl: ToastController,
-              private authService: UserAuthService,
-              private dataService: DataService) {
-      this.returnPage = (this.navParams.data) ? this.navParams.data.returnPage : null;
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    private loadingCtrl: LoadingController,
+    private toastCtrl: ToastController,
+    private authService: UserAuthService,
+    private dataService: DataService) {
+    this.returnPage = (this.navParams.data) ? this.navParams.data.returnPage : null;
   }
 
   ionViewWillEnter() {
     this.authService.getAuthenticatedUser()
-        .subscribe((user: firebase.User) => this.user = user);
+      .subscribe((user: firebase.User) => this.user = user);
     console.log((this.returnPage) ? this.returnPage : '');
   }
 
   toggleStatus() {
-    if(this.status == 'signin')  {
+    if (this.status == 'signin') {
       this.status = 'signup';
       this.toggleLabel = "Already have an Account? Log In.";
     } else {
@@ -91,8 +93,8 @@ export class LoginPage {
     loader.present();
 
     if (this.formIsValid()) {
-        let res: LoginResponse = await this.authService.loginEmail(this.logEmail, this.logPass);
-        loader.dismiss(res);
+      let res: LoginResponse = await this.authService.loginEmail(this.logEmail, this.logPass);
+      loader.dismiss(res);
     }
   }
 
@@ -111,7 +113,7 @@ export class LoginPage {
 
     loader.present();
 
-    let res: LoginResponse = await this.authService.LoginSocial(method)
+    const res: LoginResponse = await this.authService.LoginSocial(method);
     loader.dismiss(res);
   }
 
@@ -134,7 +136,7 @@ export class LoginPage {
       loader.dismiss(res);
     }
   }
-  
+
   private handleToast(msg: string) {
     this.toastCtrl.create({
       message: msg,
@@ -149,7 +151,7 @@ export class LoginPage {
 
       if (this.regPass == null || this.regPass == undefined || this.regPass == '' || this.regPass.length < 6) return false;
 
-      if (this.regConfirm == null || this.regConfirm == undefined || this.regConfirm == '' || this.regConfirm.length < 6) return false;   
+      if (this.regConfirm == null || this.regConfirm == undefined || this.regConfirm == '' || this.regConfirm.length < 6) return false;
 
       if (this.regPass !== this.regConfirm) return false;
 

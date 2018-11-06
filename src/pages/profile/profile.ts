@@ -46,7 +46,7 @@ export class ProfilePage {
     // myBirthday: "", unused
     partnerBirthday: "",
     partnerAnniversary: "",
-    specialDays: [{type: null, day:null, name: null}],
+    specialDays: [{ type: null, day: null, name: null }],
     additional: ""
   }
 
@@ -55,37 +55,37 @@ export class ProfilePage {
   newSpecialDay: string = null;
 
   constructor(
-      private dataService: DataService,
-      private authService: UserAuthService,
-      public storage: Storage,
-      public navCtrl: NavController, 
-      public navParams: NavParams) {
+    private dataService: DataService,
+    private authService: UserAuthService,
+    public storage: Storage,
+    public navCtrl: NavController,
+    public navParams: NavParams) {
   }
 
   ionViewWillEnter() {
     this.authService.getAuthenticatedUser().subscribe((user: firebase.User) => this.user = user);
-    this.authService.appUser$.subscribe((user) => { 
-        this.appUser = user;
-        if(!user) return;
-        this.editUser = {
-          id: this.appUser.id,
-          email: this.appUser.email,
-          name: this.appUser.name,
-          gender: "" || this.appUser.gender,
-          status: "" || this.appUser.status,
-          relationAnniversary: null || this.appUser.relationAnniversary,
-          partnerBirthday: null || this.appUser.partnerBirthday,
-          partnerAnniversary: null || this.appUser.partnerAnniversary,
-          specialDays: [{type: null, day:null, name: null}] || this.appUser.specialDays ,
-          additional: "" || this.appUser.additional
-        }
-        if(!this.appUser.billingAddress)  this.editUser.billingAddress = this.billingAddress;
-        else  this.editUser.billingAddress = this.appUser.billingAddress;
-        console.log(user); 
+    this.authService.appUser$.subscribe((user) => {
+      this.appUser = user;
+      if (!user) return;
+      this.editUser = {
+        id: this.appUser.id,
+        email: this.appUser.email,
+        name: this.appUser.name,
+        gender: "" || this.appUser.gender,
+        status: "" || this.appUser.status,
+        relationAnniversary: null || this.appUser.relationAnniversary,
+        partnerBirthday: null || this.appUser.partnerBirthday,
+        partnerAnniversary: null || this.appUser.partnerAnniversary,
+        specialDays: [{ type: null, day: null, name: null }] || this.appUser.specialDays,
+        additional: "" || this.appUser.additional
+      }
+      if (!this.appUser.billingAddress) this.editUser.billingAddress = this.billingAddress;
+      else this.editUser.billingAddress = this.appUser.billingAddress;
+      console.log(user);
     });
 
     this.usernameObservable = this.authService.appUser$.map(user => {
-      if(!user) return '';
+      if (!user) return '';
       return user.billingAddress.first_name + " " + user.billingAddress.last_name
     });
   }
@@ -108,10 +108,10 @@ export class ProfilePage {
     this.mode = "view";
   }
   AddDay() {
-    if(this.newSpecialType == null || this.newSpecialDay == null || this.newSpecialName == null) {
-       return;
+    if (this.newSpecialType == null || this.newSpecialDay == null || this.newSpecialName == null) {
+      return;
     }
-    this.editUser.specialDays.push({type: this.newSpecialType, day:this.newSpecialDay, name: this.newSpecialName});
+    this.editUser.specialDays.push({ type: this.newSpecialType, day: this.newSpecialDay, name: this.newSpecialName });
     this.newSpecialType = null;
     this.newSpecialDay = null;
     this.newSpecialName = null;

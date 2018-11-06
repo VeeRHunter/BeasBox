@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 
-import { IonicPage, ViewController, NavController, AlertController, NavParams, Button, Slides }               from 'ionic-angular';
-import { Billing }  from './../../app/shared/models/billing.model';
+import { IonicPage, ViewController, NavController, AlertController, NavParams, Button, Slides } from 'ionic-angular';
+import { Billing } from './../../app/shared/models/billing.model';
 import { states } from '../../app/shared/models/states.model';
 //import { Question, SurveyOpt }  from '../../models/question.model';
 //import { Setting }              from '../../models/user.model';
@@ -20,12 +20,12 @@ export class QuizPage {
   user: firebase.User;
   appUser: AppUser;
   stateList = states;
-  
+
   @ViewChild('quiz') quiz: Slides;
   @ViewChild('prevSlide') prevSlide: Button;
   @ViewChild('nextSlide') nextSlide: Button;
-  curSlide: number;  
-  curLength: number;  
+  curSlide: number;
+  curLength: number;
   isLastSlide: boolean = false;
   isFirstSlide: boolean = true;
 
@@ -58,16 +58,16 @@ export class QuizPage {
   // myBirthday: string; unused
   myPartnerBirthday: string = null;
   myPartnerAnniversary: string = null;
-  mySpecialDays: Array<{type: string, day:string, name: string}> = [{type: null, day:null, name: null}];
+  mySpecialDays: Array<{ type: string, day: string, name: string }> = [{ type: null, day: null, name: null }];
   myAdditional: string = '';
 
   constructor(public viewCtrl: ViewController,
-              public navCtrl: NavController,
-              public alertCtrl: AlertController,
-              public storage: Storage,
-              private authService: UserAuthService,
-              private dataService: DataService,
-              public navParams: NavParams) {
+    public navCtrl: NavController,
+    public alertCtrl: AlertController,
+    public storage: Storage,
+    private authService: UserAuthService,
+    private dataService: DataService,
+    public navParams: NavParams) {
   }
 
   ionViewWillEnter() {
@@ -85,18 +85,18 @@ export class QuizPage {
   setStatus(index) {
     this.myStatus = this.statusOpts[index];
   }
-    // console.log(this.regSpecialDays);
-    // let days = [];
-    // this.regSpecialDays.forEach(day => {
-    //     if(day) {
-    //         // let mm = day.getMonth() + 1; // getMonth() is zero-based
-    //         // let dd = day.getDate();
-    //         // let strDay = [day.getFullYear(), (mm>9 ? '' : '0') + mm, (dd>9 ? '' : '0') + dd].join('');
-    //         days.push(day);
-    //     }
-    // });
+  // console.log(this.regSpecialDays);
+  // let days = [];
+  // this.regSpecialDays.forEach(day => {
+  //     if(day) {
+  //         // let mm = day.getMonth() + 1; // getMonth() is zero-based
+  //         // let dd = day.getDate();
+  //         // let strDay = [day.getFullYear(), (mm>9 ? '' : '0') + mm, (dd>9 ? '' : '0') + dd].join('');
+  //         days.push(day);
+  //     }
+  // });
   AddDay() {
-    this.mySpecialDays.push({type: null, day:null, name: null});
+    this.mySpecialDays.push({ type: null, day: null, name: null });
   }
 
   CancelDay() {
@@ -104,8 +104,8 @@ export class QuizPage {
   }
 
   onPrevSlide() {
-    
-    setTimeout(() =>{
+
+    setTimeout(() => {
       if (!this.isFirstSlide) {
         this.quiz.slidePrev();
         this.isFirstSlide = this.quiz.isBeginning();
@@ -115,9 +115,9 @@ export class QuizPage {
       }
     }, 300);
   }
-  
+
   onNextSlide() {
-    setTimeout(()=> {
+    setTimeout(() => {
       this.quiz.slideNext();
       this.isFirstSlide = this.quiz.isBeginning();
       this.isLastSlide = this.quiz.isEnd();
@@ -136,7 +136,7 @@ export class QuizPage {
   }
 
   async saveMyProfile() {
-    if(this.checkInvalidate()) {
+    if (this.checkInvalidate()) {
       this.alertCtrl.create({
         subTitle: 'Please input FIRST NAME and LAST NAME.',
         buttons: [

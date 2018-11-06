@@ -18,9 +18,9 @@ export class DataService {
     profileObject: AngularFireObject<AppUser>;
     orderObject: AngularFireObject<any>;
 
-    constructor(private afDb: AngularFireDatabase, public storage: Storage) {}
+    constructor(private afDb: AngularFireDatabase, public storage: Storage) { }
 
-    async saveAppUser(user: firebase.User,  appUser?: AppUser) {
+    async saveAppUser(user: firebase.User, appUser?: AppUser) {
         let tempName: string = user.email.substring(0, user.email.lastIndexOf('@'));
         this.profileObject = this.afDb.object<AppUser>(`/users/${user.uid}`);
 
@@ -37,7 +37,7 @@ export class DataService {
                 });
             }
             catch (e) { console.log(e) }
-        }        
+        }
     }
 
     getAppUser(user: firebase.User): Observable<AppUser> {
@@ -50,7 +50,7 @@ export class DataService {
     }
 
     async removeAppUser() {
-        try{ await this.storage.remove('user') }
+        try { await this.storage.remove('user') }
         catch (e) { console.log(e) }
     }
 
@@ -69,7 +69,7 @@ export class DataService {
             return await this.storage.get(k);
         }
         catch (e) { console.log(e) }
-        
+
     }
 
     async saveKeyToStorage(k: string, v: any) {
@@ -77,7 +77,7 @@ export class DataService {
             return await this.storage.set(k, v);
         }
         catch (e) { console.log(e) }
-        
+
     }
 
 

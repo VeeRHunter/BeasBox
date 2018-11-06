@@ -5,7 +5,7 @@ page-custom-box {
         z-index: 100;
         width: 100px;
         height: 24px;
-        background: #FFF;
+        background: transparent;
         cursor: pointer;
         font-weight: bold;
         text-align: right;
@@ -18,7 +18,7 @@ page-custom-box {
         z-index: 100;
         width: 40px;
         height: 40px;
-        background: #FFF;
+        background: transparent;
         cursor: pointer;
         text-align: center;
         border-radius: 35px;
@@ -35,9 +35,8 @@ page-custom-box {
         z-index: 100;
         width: 50px;
         height: 50px;
-        background: #FFF;
+        background: transparent;
         cursor: pointer;
-
         font-size: 2.8rem;
         text-align: center;
         display: flex;
@@ -50,38 +49,36 @@ page-custom-box {
     }
     .bg {
         font-weight: bold;
-        width: 100%;
-        height: 100px;
+        width: 100%; // background: url(../assets/imgs/bg3.png) center center no-repeat;
+        // background-size: cover;
     }
     .bg img {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
+        height: 110px;
         z-index: -1;
     }
     .bg p.title {
-        color: #FFF;
+        color: black;
         font-size: 2.2rem;
         padding-left: 30px;
         margin: 53px 0 5px 0;
-    }    
-
+    }
     .bg p.subtitle {
-        color: #FFF;
+        color: black;
         font-size: 1.2rem;
         padding-left: 30px;
         margin: 0;
-    }    
-
+    }
     textarea.text-input {
         height: 80px;
     }
-
-    .list > .item-block:last-child, .list > .item-wrapper:last-child .item-block {
+    .list>.item-block:last-child,
+    .list>.item-wrapper:last-child .item-block {
         border-bottom: none;
     }
-
     .text .input-wrapper {
         border: 0.55px solid #c8c7cc !important;
     }

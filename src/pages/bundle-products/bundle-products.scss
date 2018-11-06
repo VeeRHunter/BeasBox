@@ -5,11 +5,11 @@ page-bundle-products {
         z-index: 100;
         width: 100px;
         height: 24px;
-        background: #FFF;
+        background: transparent;
         cursor: pointer;
         font-weight: bold;
         text-align: right;
-        padding: 4px 10px;   
+        padding: 4px 10px;
     }
     .cart-bt {
         position: absolute;
@@ -18,7 +18,7 @@ page-bundle-products {
         z-index: 100;
         width: 40px;
         height: 40px;
-        background: #FFF;
+        background: transparent;
         cursor: pointer;
         text-align: center;
         border-radius: 35px;
@@ -35,9 +35,8 @@ page-bundle-products {
         z-index: 100;
         width: 50px;
         height: 50px;
-        background: #FFF;
+        background: transparent;
         cursor: pointer;
-
         font-size: 2.8rem;
         text-align: center;
         display: flex;
@@ -52,6 +51,10 @@ page-bundle-products {
         position: relative;
         height: 227px;
         overflow: hidden;
+        img {
+            width: 100%;
+            height: 100%;
+        }
     }
     .first-block .mask {
         width: 100%;
@@ -63,7 +66,7 @@ page-bundle-products {
         background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(100%, rgba(0, 0, 0, 0.29)));
         background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(rgba(0, 0, 0, 0.29)));
         background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.29) 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000', GradientType=0 );
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000', GradientType=0);
     }
     .first-block img {
         width: 100%;
@@ -79,7 +82,8 @@ page-bundle-products {
         left: 20px;
         font-size: 2rem;
         color: #000;
-        background: #FFF;
+        background: transparent;
+        font-family: 'BirdAndThorn';
         padding: 5px 10px;
         height: 32px;
         font-weight: bold;
@@ -90,10 +94,11 @@ page-bundle-products {
         left: 20px;
         font-size: 2rem;
         color: #000;
-        background: #FFF;
+        background: transparent;
         padding: 5px 10px;
         height: 32px;
         font-weight: bold;
+        font-family: 'BirdAndThorn';
     }
     .first-block .third-line {
         position: absolute;
@@ -101,10 +106,11 @@ page-bundle-products {
         left: 20px;
         font-size: 1.2rem;
         color: #000;
-        background: #FFF;
+        background: transparent;
         padding: 5px 20px 5px 5px;
         height: 24px;
         font-weight: bold;
+        font-family: 'BirdAndThorn';
     }
     .second-block .title {
         color: #FFF;
@@ -118,8 +124,8 @@ page-bundle-products {
         padding-top: 2px;
         width: 50%;
     }
-
-    .card-md, .card-ios { 
+    .card-md,
+    .card-ios {
         box-shadow: none !important;
     }
     .card-title-md {
@@ -137,7 +143,8 @@ page-bundle-products {
         border-radius: 10px;
         padding: 1px 45px;
     }
-    .searchbar-md .searchbar-search-icon, .searchbar-md .searchbar-md-cancel {
+    .searchbar-md .searchbar-search-icon,
+    .searchbar-md .searchbar-md-cancel {
         position: absolute;
         background-repeat: no-repeat;
         background-size: 20px;

@@ -2,7 +2,8 @@
 </ion-header>
 
 <ion-content>
-    <div class="back-bt" (tap)="goBack()"> <!-- navPop -->
+    <div class="back-bt" (tap)="goBack()">
+        <!-- navPop -->
         <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
         &nbsp;&nbsp;Back to Cart
     </div>
@@ -14,16 +15,20 @@
         <!-- bg-cart2.jpg -->
         <img src="assets/imgs/bg-olive.svg">
         <p class="title">
-          CHECK OUT
+            CHECK OUT
         </p>
     </div>
     <div class="container" style="margin-top: 10px;" [formGroup]="order_form">
         <div text-center>
-          <!-- *ngIf="!user" -->
-          <p class="top_quiz"><ion-icon name="contact"></ion-icon>&nbsp;&nbsp;Returning customer?</p>
-          <p class="top_link" (tap)="goToLogin()">CLICK HERE TO LOGIN</p>
-          <p class="top_quiz"><ion-icon name="card"></ion-icon>&nbsp;&nbsp;Have a coupon?</p>
-          <p class="top_link" (tap)="presentCouponPrompt()">CLICK HERE TO ENTER YOUR CODE</p>
+            <!-- *ngIf="!user" -->
+            <p class="top_quiz">
+                <ion-icon name="contact"></ion-icon>&nbsp;&nbsp;Returning customer?
+            </p>
+            <p class="top_link" (tap)="goToLogin()">CLICK HERE TO LOGIN</p>
+            <p class="top_quiz">
+                <ion-icon name="card"></ion-icon>&nbsp;&nbsp;Have a coupon?
+            </p>
+            <p class="top_link" (tap)="presentCouponPrompt()">CLICK HERE TO ENTER YOUR CODE</p>
         </div>
         <ion-list inset text-wrap no-lines>
             <ion-item>EMAIL ADDRESS *</ion-item>
@@ -41,12 +46,12 @@
                     <ion-input type="text" formControlName="last_name"></ion-input>
                 </ion-item>
                 <ion-item>PHONE *</ion-item>
-                <ion-item>                
+                <ion-item>
                     <ion-input type="tel" formControlName="phone"></ion-input>
                 </ion-item>
                 <ion-item>
-                  <ion-label>SHIP TO A DIFFERENT ADDRESS</ion-label>
-                  <ion-checkbox formControlName="shipToDifferent" #shipToDifferent (ionChange)="toggleValidators()"></ion-checkbox>
+                    <ion-label>SHIP TO A DIFFERENT ADDRESS</ion-label>
+                    <ion-checkbox formControlName="shipToDifferent" #shipToDifferent (ionChange)="toggleValidators()"></ion-checkbox>
                 </ion-item>
             </ng-container>
 
@@ -54,7 +59,7 @@
                 <ion-label>Select Shipping Address</ion-label>
                 <ion-select formControlName="prevAddressIndex" (ionChange)="selectPrevShippingAddr()" #selectAddr>
                     <ion-option *ngFor="let s of shippingAddresses; let i=index" [value]="i">Address {{i}}</ion-option>
-                    <ion-option [value] = "shippingAddresses.length">New Address</ion-option>
+                    <ion-option [value]="shippingAddresses.length">New Address</ion-option>
                 </ion-select>
             </ion-item>
 
@@ -103,19 +108,20 @@
             <br> <br>
             <ion-item>ORDER NOTES *</ion-item>
             <ion-item>
-              <ion-label color="primary">(IMPORTANT: This is where you include what you want your handwritten carts to say!)</ion-label> 
+                <ion-label color="primary">(IMPORTANT: This is where you include what you want your handwritten carts
+                    to say!)</ion-label>
             </ion-item>
             <ion-item>
-              <ion-textarea formControlName="order_notes" placeholder="Notes about your order, e.g. special notes for delivery."></ion-textarea>
+                <ion-textarea formControlName="order_notes" placeholder="Notes about your order, e.g. special notes for delivery."></ion-textarea>
             </ion-item>
-          <br><br>
+            <br><br>
         </ion-list>
 
         <ion-list text-wrap no-lines padding style="background-color:#f4f4f4" id="summary">
             <ion-item color="light">YOUR ORDER</ion-item>
             <ion-item color="light">
-              <ion-label item-start>PRODUCT</ion-label>
-              <ion-label item-end text-end>TOTAL</ion-label>
+                <ion-label item-start>PRODUCT</ion-label>
+                <ion-label item-end text-end>TOTAL</ion-label>
             </ion-item>
             <hr>
             <ng-container *ngFor="let item of cart?.items; let i=index">
@@ -124,17 +130,17 @@
                         <!-- &nbsp;&nbsp;<ion-icon name="close" large></ion-icon> &nbsp;&nbsp; -->
                         Qty : {{item.quantity}}</ion-label>
                     <ion-label item-end text-end color="primary">
-                      <h2><b>{{item.product.price*item.quantity | currency:'USD':'symbol'}}</b></h2>
+                        <h2><b>{{item.product.price*item.quantity | currency:'USD':'symbol'}}</b></h2>
                     </ion-label>
                 </ion-item>
                 <hr>
             </ng-container>
 
             <ion-item color="light">
-              <ion-label item-start>SUBTOTAL</ion-label>
-              <ion-label item-center text-end color="primary">
-                  <h2><b>{{subTotal | currency:'USD':'symbol'}}</b></h2>
-              </ion-label>
+                <ion-label item-start>SUBTOTAL</ion-label>
+                <ion-label item-center text-end color="primary">
+                    <h2><b>{{subTotal | currency:'USD':'symbol'}}</b></h2>
+                </ion-label>
             </ion-item>
 
             <ion-item color="light">SHIPPING</ion-item>
@@ -156,43 +162,47 @@
                 </ion-item>
             </ion-list>
 
-            <p padding-left margin-left class="top_link" *ngIf="shippingAddrChanged" (tap)="updateShippingRates()">UPDATE SHIPPING RATES</p>
+            <p padding-left margin-left class="top_link" *ngIf="shippingAddrChanged" (tap)="updateShippingRates()">UPDATE
+                SHIPPING RATES</p>
 
             <ion-item color="light">
-              <ion-label item-start>HANDLING</ion-label>
-              <ion-label item-center text-end color="primary">
-                  <h2><b>{{handle | currency:'USD':'symbol'}}</b></h2>
-              </ion-label>
+                <ion-label item-start>HANDLING</ion-label>
+                <ion-label item-center text-end color="primary">
+                    <h2><b>{{handle | currency:'USD':'symbol'}}</b></h2>
+                </ion-label>
             </ion-item>
 
-            <p padding-left margin-left>Handling fees inclusive of ivory keepsake box, handwritten card, and packaging to perfection</p>
+            <p padding-left margin-left>Handling fees inclusive of ivory keepsake box, handwritten card, and packaging
+                to perfection</p>
 
             <ion-item color="light">
-              <ion-label item-start>TAX</ion-label>
-              <ion-label item-center text-end color="primary">
-                  <h2><b>{{tax | currency:'USD':'symbol'}}</b></h2>
-              </ion-label>
-            </ion-item>
-
-            <br>
-            <ion-item color="light">
-              <ion-label item-start>TOTAL</ion-label>
-              <ion-label item-center text-end color="primary">
-                  <h1><b>{{total | currency:'USD':'symbol'}}</b></h1>
-              </ion-label>
+                <ion-label item-start>TAX</ion-label>
+                <ion-label item-center text-end color="primary">
+                    <h2><b>{{tax | currency:'USD':'symbol'}}</b></h2>
+                </ion-label>
             </ion-item>
 
             <br>
             <ion-item color="light">
-              <ion-label item-start>Paypal</ion-label>
-              <ion-label item-center text-end >
-                  <h2>What is Paypal?</h2>
-              </ion-label>
+                <ion-label item-start>TOTAL</ion-label>
+                <ion-label item-center text-end color="primary">
+                    <h1><b>{{total | currency:'USD':'symbol'}}</b></h1>
+                </ion-label>
+            </ion-item>
+
+            <br>
+            <ion-item color="light">
+                <ion-label item-start>Paypal</ion-label>
+                <ion-label item-center text-end>
+                    <h2>What is Paypal?</h2>
+                </ion-label>
             </ion-item>
             <p padding-left margin-left>You can pay with your credit card if you don't have a Paypal account!</p>
         </ion-list>
-        <div padding> <!-- style="background-color:#f4f4f4" [disabled]="!order_form.valid"--> 
-            <button ion-button full color="paypal" (tap) = "proceedToPaypal()" [disabled]="!this.order_form.valid">PROCEED TO PAYPAL</button>
+        <div padding>
+            <!-- style="background-color:#f4f4f4" [disabled]="!order_form.valid"-->
+            <button ion-button full color="paypal" (tap)="proceedToPaypal()" [disabled]="!this.order_form.valid">PROCEED
+                TO PAYPAL</button>
         </div>
-    </div>     
+    </div>
 </ion-content>
