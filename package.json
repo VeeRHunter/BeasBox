@@ -33,7 +33,7 @@
     "angularfire2": "^5.0.2",
     "card.io.cordova.mobilesdk": "^2.1.0",
     "com.paypal.cordova.mobilesdk": "^3.5.0",
-    "cordova-android": "6.3.0",
+    "cordova-android-support-gradle-release": "^1.4.5",
     "cordova-browser": "5.0.4",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-firebase": "^2.0.5",
@@ -55,7 +55,9 @@
     "rxjs": "5.5.11",
     "sw-toolbox": "3.6.0",
     "woocommerce-api": "^1.4.2",
-    "zone.js": "0.8.26"
+    "zone.js": "0.8.26",
+    "cordova-ios": "~4.5.5",
+    "cordova-android": "~7.0.0"
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.1.10",
@@ -71,12 +73,15 @@
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-ionic-webview": {},
       "com.paypal.cordova.mobilesdk": {},
-      "cordova-plugin-firebase": {}
+      "cordova-plugin-firebase": {},
+      "cordova-android-support-gradle-release": {
+        "ANDROID_SUPPORT_VERSION": "27.+"
+      }
     },
     "platforms": [
       "browser",
-      "android",
-      "ios"
+      "ios",
+      "android"
     ]
   }
 }

@@ -1,12 +1,13 @@
 <ion-header>
-  <!-- <ion-navbar>
+    <!-- <ion-navbar>
     <ion-title>Profile</ion-title>
   </ion-navbar> -->
 </ion-header>
 
 
 <ion-content>
-    <div class="back-bt" (tap)="goBack()"><!-- navPop -->          
+    <div class="back-bt" (tap)="goBack()">
+        <!-- navPop -->
         <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
         BACK
     </div>
@@ -16,14 +17,16 @@
     <div class="menu-bt" menuToggle="right">
         <!-- <img src="assets/imgs/menu-bt.jpg"> -->
         <ion-icon name="menu"></ion-icon>
+
+        <!-- <img src="assets/imgs/menu-bt.png" class="menu-slash-image" menuClose> -->
     </div>
     <div class="bg">
         <!-- bg-cart2.jpg -->
         <img src="assets/imgs/bg-red.svg">
         <p class="title"> {{usernameObservable | async}}</p>
-        <p class="subtitle" *ngIf="mode=='view'" (tap) = "editProfile()">EDIT PROFILE</p>
-        <p class="subtitle" *ngIf="mode=='edit'" (tap) = "saveProfile()">SAVE PROFILE</p>
-    </div> 
+        <p class="subtitle" *ngIf="mode=='view'" (tap)="editProfile()">EDIT PROFILE</p>
+        <p class="subtitle" *ngIf="mode=='edit'" (tap)="saveProfile()">SAVE PROFILE</p>
+    </div>
 
     <ng-container *ngIf="mode=='view'">
         <div class="container" style="margin-top: 10px;">
@@ -63,7 +66,7 @@
                 <!-- <br> -->
                 <!-- <button ion-button round (tap)="onNextSlide()" full>Next</button> -->
             </ion-list>
-        </div>        
+        </div>
     </ng-container>
     <ng-container *ngIf="mode=='edit'">
         <div class="container" style="margin-top: 20px;">
@@ -94,7 +97,7 @@
                 </ion-item> -->
                 <ion-item>
                     <ion-label style="color: #f53d3d">STATE *</ion-label>
-                    <ion-select  [(ngModel)]="editUser.billingAddress.state">
+                    <ion-select [(ngModel)]="editUser.billingAddress.state">
                         <ion-option [value]="s.code" *ngFor="let s of stateList">{{s.name}}</ion-option>
                     </ion-select>
                 </ion-item>
@@ -133,37 +136,28 @@
                     RELATIONSHIP
                 </ion-segment-button>
             </ion-segment>
-            <ion-list inset text-wrap  *ngIf="editUser.status == 'married' || editUser.status == 'relationship'">
+            <ion-list inset text-wrap *ngIf="editUser.status == 'married' || editUser.status == 'relationship'">
                 <ion-item>
                     <ion-label Fixed style="font-size: 1.6rem;">Anniversary</ion-label>
-                    <ion-datetime
-                        [(ngModel)]="editUser.relationAnniversary"
-                        pickerFormat="MMM, DD, YYYY" 
-                        displayFormat="MMM, DD, YYYY" 
+                    <ion-datetime [(ngModel)]="editUser.relationAnniversary" pickerFormat="MMM, DD, YYYY" displayFormat="MMM, DD, YYYY"
                         min="1950">
                     </ion-datetime>
                 </ion-item>
             </ion-list>
             <br>
-            <ion-list inset text-wrap >
+            <ion-list inset text-wrap>
                 <ion-item no-lines style="border-bottom: none !important">
                     <h2><b>PARTNER</b></h2>
                 </ion-item>
                 <ion-item>
                     <ion-label Fixed>Birthday</ion-label>
-                    <ion-datetime
-                    [(ngModel)]="editUser.partnerBirthday" 
-                    pickerFormat="MMM, DD, YYYY" 
-                    displayFormat="MMM, DD, YYYY" 
-                    min="1900">
+                    <ion-datetime [(ngModel)]="editUser.partnerBirthday" pickerFormat="MMM, DD, YYYY" displayFormat="MMM, DD, YYYY"
+                        min="1900">
                     </ion-datetime>
                 </ion-item>
                 <ion-item>
                     <ion-label Fixed style="font-size: 1.6rem;">Anniversary</ion-label>
-                    <ion-datetime
-                        [(ngModel)]="editUser.partnerAnniversary" 
-                        pickerFormat="MMM, DD, YYYY" 
-                        displayFormat="MMM, DD, YYYY" 
+                    <ion-datetime [(ngModel)]="editUser.partnerAnniversary" pickerFormat="MMM, DD, YYYY" displayFormat="MMM, DD, YYYY"
                         min="1950">
                     </ion-datetime>
                 </ion-item>
@@ -172,17 +166,16 @@
             <ion-list inset text-wrap>
                 <ion-item no-lines style="border-bottom: none !important">
                     <h2><b>SPECIAL DAY</b></h2>
-                    <button ion-button outline item-end (tap)="CancelDay()" icon-only style="width:80px"><ion-icon name="trash"></ion-icon></button>
+                    <button ion-button outline item-end (tap)="CancelDay()" icon-only style="width:80px">
+                        <ion-icon name="trash"></ion-icon>
+                    </button>
                 </ion-item>
                 <ng-container *ngFor="let d of editUser.specialDays; let i = index">
                     <br>
                     <ion-item>
                         <ion-label fixed>Date</ion-label>
-                        <ion-datetime
-                            [(ngModel)]="editUser.specialDays[i].day" 
-                            pickerFormat="MMM, DD, YYYY"
-                            displayFormat="MMM, DD, YYYY"
-                            min="2018">
+                        <ion-datetime [(ngModel)]="editUser.specialDays[i].day" pickerFormat="MMM, DD, YYYY"
+                            displayFormat="MMM, DD, YYYY" min="2018">
                         </ion-datetime>
                     </ion-item>
                     <ion-item>
@@ -195,7 +188,7 @@
                     <ion-item class="specialName">
                         <ion-label fixed>Name</ion-label>
                         <ion-input item-right [(ngModel)]="editUser.specialDays[i].name"></ion-input>
-                    </ion-item>                              
+                    </ion-item>
                 </ng-container>
 
                 <br><br>
@@ -212,15 +205,17 @@
                 <ion-item class="specialName">
                     <ion-label>Name</ion-label>
                     <ion-input item-end [(ngModel)]="newSpecialName"> </ion-input>
-                </ion-item>     
+                </ion-item>
                 <ion-item>
                     <ion-label fixed>Date</ion-label>
                     <ion-datetime item-end [(ngModel)]="newSpecialDay"> </ion-datetime>
-                </ion-item>     
+                </ion-item>
                 <ion-item text-center>
-                    <button ion-button outline item-center (tap)="AddDay()" icon-only style="width:100px"><ion-icon name="add-circle"></ion-icon></button>
-                </ion-item>           
+                    <button ion-button outline item-center (tap)="AddDay()" icon-only style="width:100px">
+                        <ion-icon name="add-circle"></ion-icon>
+                    </button>
+                </ion-item>
             </ion-list>
-        </div>        
+        </div>
     </ng-container>
 </ion-content>

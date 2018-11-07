@@ -480,31 +480,36 @@ export class CheckoutPage {
   }
 
   async proceedToPaypal() {
-    if (this.shippingAddrChanged) {
-      let alert = this.alertCtrl.create({
-        subTitle: 'Please update shipping rates',
-        buttons: ['Dismiss']
-      });
-      alert.present();
-      return;
-    }
-
-    this.calcShipping()
-    if (!this.order_form.valid) {
-      return;
-    }
-    this.dataService.placeOrder(this.order_form.value);
-    if (this.shipToDifferent.checked) {
-      if (this.wantSave.checked) {
-        if (this.appUser.shippingAddresses && this.appUser.shippingAddresses.length > 0)
-          this.appUser.shippingAddresses.push(this.order_form.get("shipping_group").value as Shipping);
-        else
-          this.appUser.shippingAddresses = [this.order_form.get("shipping_group").value as Shipping];
-
-        await this.dataService.saveAppUser(this.user, this.appUser)
+    if (this.order_form.valid) {
+      if (this.shippingAddrChanged) {
+        let alert = this.alertCtrl.create({
+          subTitle: 'Please update shipping rates',
+          buttons: ['Dismiss']
+        });
+        alert.present();
+        return;
       }
+
+      this.calcShipping()
+      if (!this.order_form.valid) {
+        return;
+      }
+      this.dataService.placeOrder(this.order_form.value);
+      if (this.shipToDifferent.checked) {
+        if (this.wantSave.checked) {
+          if (this.appUser.shippingAddresses && this.appUser.shippingAddresses.length > 0)
+            this.appUser.shippingAddresses.push(this.order_form.get("shipping_group").value as Shipping);
+          else
+            this.appUser.shippingAddresses = [this.order_form.get("shipping_group").value as Shipping];
+
+          await this.dataService.saveAppUser(this.user, this.appUser)
+        }
+      }
+      await this.placeOrder()
+    } else {
+      console.log(this.order_form);
+      console.log(this.order_form.controls);
     }
-    await this.placeOrder()
   }
 
   async placeOrder() {

@@ -1,5 +1,5 @@
 <ion-header>
-  <!-- <ion-navbar  padding-vertical color="bees" hideBackButton>
+    <!-- <ion-navbar  padding-vertical color="bees" hideBackButton>
     <ion-buttons left>
       <button ion-button icon-only navPop>
         <ion-icon name="arrow-back"></ion-icon>
@@ -26,6 +26,7 @@
     <div class="menu-bt" menuToggle="right">
         <!-- <img src="assets/imgs/menu-bt.jpg"> -->
         <ion-icon name="menu"></ion-icon>
+        <!-- <img src="assets/imgs/menu-bt.png" class="menu-slash-image" menuClose> -->
     </div>
     <div class="first-block">
         <div class="mask"></div>
@@ -35,37 +36,38 @@
         <div class="third-line">Item made just for Him or Her</div>
     </div>
     <ion-card padding-horizontal>
-      <img [src]="product.images[0].src"/>
-      <ion-row >
-        <ion-col text-left>
-          <ion-label text-wrap no-padding style="font-size: 22px; font-weight: bold;">
-              {{ product.name }}
-          </ion-label>          
-        </ion-col>
-        <ion-col text-right style="font-size: 18px; font-weight: bold;">
-          <ion-label no-padding [innerHTML]="product.price | currency:'USD':'symbol'" style="font-weight: 500;"></ion-label>                    
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <p [innerHTML]="product.description"></p>    
-      </ion-row>
-      <ion-row margin>
-          <ion-col text-left>
-              <button no-margin ion-button (tap)="goBack()">Back</button>
-          </ion-col>
-          <ion-col text-center> <!-- no-padding no-margin -->
-              <button  no-margin *ngIf="!isInCart; else addRemove" ion-button  block full  (tap)="addToCart(product)">
-                  <!-- <ion-icon name="add" item-left></ion-icon> -->Add To Cart
-              </button>
-              <ng-template #addRemove>
-                  <button ion-button item-left>
-                      <ion-icon name="remove"></ion-icon>
-                  </button>
-                  <button ion-button item-right>
-                      <ion-icon name="add"></ion-icon>
-                  </button>
-              </ng-template>
-          </ion-col>
-      </ion-row>
+        <img [src]="product.images[0].src" />
+        <ion-row>
+            <ion-col text-left>
+                <ion-label text-wrap no-padding style="font-size: 22px; font-weight: bold;">
+                    {{ product.name }}
+                </ion-label>
+            </ion-col>
+            <ion-col text-right style="font-size: 18px; font-weight: bold;">
+                <ion-label no-padding [innerHTML]="product.price | currency:'USD':'symbol'" style="font-weight: 500;"></ion-label>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <p [innerHTML]="product.description"></p>
+        </ion-row>
+        <ion-row margin>
+            <ion-col text-left>
+                <button no-margin ion-button (tap)="goBack()">Back</button>
+            </ion-col>
+            <ion-col text-center>
+                <!-- no-padding no-margin -->
+                <button no-margin *ngIf="!isInCart; else addRemove" ion-button block full (tap)="addToCart(product)">
+                    <!-- <ion-icon name="add" item-left></ion-icon> -->Add To Cart
+                </button>
+                <ng-template #addRemove>
+                    <button ion-button item-left>
+                        <ion-icon name="remove"></ion-icon>
+                    </button>
+                    <button ion-button item-right>
+                        <ion-icon name="add"></ion-icon>
+                    </button>
+                </ng-template>
+            </ion-col>
+        </ion-row>
     </ion-card>
 </ion-content>

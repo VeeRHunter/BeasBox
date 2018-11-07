@@ -2,7 +2,7 @@
 </ion-header>
 
 <ion-content>
-    <div class="back-bt" (tap)="goBack()">  
+    <div class="back-bt" (tap)="goBack()">
         <!-- navPop -->
         <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
         BACK
@@ -12,6 +12,7 @@
     </div>
     <div class="menu-bt" menuToggle="right">
         <!-- <img src="assets/imgs/menu-bt.jpg"> -->
+        <!-- <img src="assets/imgs/menu-bt.png" class="menu-slash-image" menuClose> -->
         <ion-icon name="menu"></ion-icon>
     </div>
     <div class="first-block">
@@ -22,16 +23,16 @@
     </div>
     <div class="second-block">
         <div class="title">
-          BROWSE BY CATEGORY
+            BROWSE BY CATEGORY
         </div>
         <ion-list>
-          <button ion-item (tap)="getSubCateProducts('All')"> ALL <ion-icon name="arrow-forward"></ion-icon></button>
-          <button ion-item (tap)="getSubCateProducts('his')"> FOR HIM <ion-icon name="arrow-forward"></ion-icon></button>
-          <button ion-item (tap)="getSubCateProducts('hers')"> FOR HERS <ion-icon name="arrow-forward"></ion-icon></button>
-          <button ion-item (tap)="getSubCateProducts('birthdays')"> BIRTHDAY <ion-icon name="arrow-forward"></ion-icon></button>
-          <button ion-item (tap)="getSubCateProducts('weddings')"> WEDDING <ion-icon name="arrow-forward"></ion-icon></button>
-          <button ion-item (tap)="getSubCateProducts('housewarmings')"> HOUSEWARMING <ion-icon name="arrow-forward"></ion-icon></button>
-          <button ion-item (tap)="getSubCateProducts('babys')"> BABY <ion-icon name="arrow-forward"></ion-icon></button>
+            <button ion-item (tap)="getSubCateProducts('All')"> ALL <ion-icon name="arrow-forward"></ion-icon></button>
+            <button ion-item (tap)="getSubCateProducts('his')"> FOR HIM <ion-icon name="arrow-forward"></ion-icon></button>
+            <button ion-item (tap)="getSubCateProducts('hers')"> FOR HERS <ion-icon name="arrow-forward"></ion-icon></button>
+            <button ion-item (tap)="getSubCateProducts('birthdays')"> BIRTHDAY <ion-icon name="arrow-forward"></ion-icon></button>
+            <button ion-item (tap)="getSubCateProducts('weddings')"> WEDDING <ion-icon name="arrow-forward"></ion-icon></button>
+            <button ion-item (tap)="getSubCateProducts('housewarmings')"> HOUSEWARMING <ion-icon name="arrow-forward"></ion-icon></button>
+            <button ion-item (tap)="getSubCateProducts('babys')"> BABY <ion-icon name="arrow-forward"></ion-icon></button>
         </ion-list>
-      </div>
+    </div>
 </ion-content>

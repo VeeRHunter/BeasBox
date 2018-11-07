@@ -4,40 +4,42 @@
 
 
 <ion-content>
-  <div class="back-bt" (tap)="goBack()"> <!-- navPop -->
-      <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
-      &nbsp;&nbsp;Keep Shopping
+  <div class="back-bt" (tap)="goBack()">
+    <!-- navPop -->
+    <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+    &nbsp;&nbsp;Keep Shopping
   </div>
   <div class="menu-bt" menuToggle="right">
-      <!-- <img src="assets/imgs/menu-bt.jpg"> -->
-      <ion-icon name="menu"></ion-icon>
+    <!-- <img src="assets/imgs/menu-bt.jpg"> -->
+    <ion-icon name="menu"></ion-icon>
+    <!-- <img src="assets/imgs/menu-bt.png" class="menu-slash-image" menuClose> -->
   </div>
   <div class="bg">
-      <!-- bg-cart1.jpg -->
-      <img src="assets/imgs/bg-peach.svg">
-      <p class="title">
-        {{usernameObservable | async}}  
-      </p>
+    <!-- bg-cart1.jpg -->
+    <img src="assets/imgs/bg-peach.svg">
+    <p class="title">
+      {{usernameObservable | async}}
+    </p>
   </div>
   <div padding-horizontal>
-      <ion-item no-lines text-center *ngIf="appUser === null">
-          <ion-label>You are not logged in</ion-label>
+    <ion-item no-lines text-center *ngIf="appUser === null">
+      <ion-label>You are not logged in</ion-label>
+    </ion-item>
+    <h2>YOUR ORDER HISTORY</h2>
+    <ng-container *ngIf="orderList != null">
+      <ion-item no-lines text-center *ngIf="appUser !== null && orderList.length < 1">
+        No orders made yet...
       </ion-item>
-      <h2>YOUR ORDER HISTORY</h2>
-      <ng-container *ngIf="orderList != null">
-          <ion-item no-lines text-center *ngIf="appUser !== null && orderList.length < 1">
-            No orders made yet...
+      <ng-container *ngIf="appUser !== null && orderList.length > 0">
+        <ion-list>
+          <ion-item *ngFor="let order of orderList">
+            <p>{{ order.total | currency:'USD':'symbol' }}</p>
+            <p>{{ order.state }}</p>
+            <p>{{ order.address_1 }}</p>
           </ion-item>
-          <ng-container *ngIf="appUser !== null && orderList.length > 0">
-            <ion-list>
-              <ion-item *ngFor="let order of orderList">
-                <p>{{ order.total | currency:'USD':'symbol' }}</p>
-                <p>{{ order.state }}</p>
-                <p>{{ order.address_1 }}</p>
-              </ion-item>
-            </ion-list>
-          </ng-container>    
+        </ion-list>
       </ng-container>
+    </ng-container>
 
-  </div>  
+  </div>
 </ion-content>

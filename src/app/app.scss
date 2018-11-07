@@ -18,6 +18,7 @@
     color: black !important;
     src: url('../assets/fonts/BirdAndThorn.ttf') format('truetype'), url('../assets/fonts/BirdAndThorn.otf') format('opentype');
 }
+
 @font-face {
     font-family: 'GeorgiaScript';
     font-style: normal;
@@ -98,4 +99,8 @@ page-home ion-content .second-line,
 ion-content .title,
     {
     font-family: "NeueEinstellung-Bold";
+}
+
+.menu-slash-image{
+    width: 25px;
 }
