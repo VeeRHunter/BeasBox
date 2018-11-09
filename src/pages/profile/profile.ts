@@ -9,6 +9,7 @@ import { states } from '../../app/shared/models/states.model';
 
 import { Storage } from '@ionic/storage';
 import { Observable } from '../../../node_modules/rxjs/Observable';
+import * as firebase from 'firebase';
 
 @IonicPage()
 @Component({
