@@ -10,7 +10,6 @@ import { HelperService } from '../../app/shared/services/helper.service';
 import { AppUser } from '../../app/shared/models/app-user.model';
 import { DataService } from '../../app/shared/services/data.service';
 import { Observable } from '../../../node_modules/rxjs/Observable';
-import * as firebase from 'firebase';
 
 @IonicPage()
 @Component({

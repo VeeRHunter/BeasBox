@@ -31,7 +31,7 @@ import { UserAuthService } from './shared/services/user-auth.service';
 import { UPSService } from './shared/services/ups.service';
 import { ShoppingCartService } from './shared/services/shopping-cart.service';
 import { WooCommerceService } from './shared/services/woocommerce.service';
-
+import { DecimalPipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -65,7 +65,8 @@ import { WooCommerceService } from './shared/services/woocommerce.service';
     ShoppingCartService,
     UserAuthService,
     UPSService,
-    WooCommerceService
+    WooCommerceService,
+    DecimalPipe
   ]
 })
 export class AppModule {

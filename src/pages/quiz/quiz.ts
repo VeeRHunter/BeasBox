@@ -9,7 +9,6 @@ import { Storage } from '@ionic/storage';
 import { AppUser } from '../../app/shared/models/app-user.model';
 import { UserAuthService } from '../../app/shared/services/user-auth.service';
 import { DataService } from '../../app/shared/services/data.service';
-import * as firebase from 'firebase';
 
 
 @IonicPage()

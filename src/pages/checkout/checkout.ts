@@ -16,9 +16,8 @@ import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms'
 import { Cart } from '../../app/shared/models/cart.model';
 import { states } from '../../app/shared/models/states.model';
 import { SimplePlaceholderMapper } from '../../../node_modules/@angular/compiler/src/i18n/serializers/serializer';
+import { DecimalPipe } from '@angular/common';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
-
-import * as firebase from 'firebase';
 
 var self
 
@@ -142,8 +141,8 @@ export class CheckoutPage {
     private wooService: WooCommerceService,
     private upsService: UPSService,
     private payPal: PayPal,
-    public navParams: NavParams) {
-    console.log('New checkout function');
+    public navParams: NavParams,
+    private decimalPipe: DecimalPipe) {
     this.cart = this.navParams.get('cart');
     console.log(this.cart)
   }
@@ -195,11 +194,11 @@ export class CheckoutPage {
     this.taxable += this.handle + this.shippingFee
     this.total = this.subTotal + this.handle + this.shippingFee + this.tax;
     this.tax = 0;
-    this.order_form.get("subtotal").setValue(this.subTotal)
+    this.order_form.get("subtotal").setValue(this.decimalPipe.transform(this.subTotal, '1.2-2'));
     this.order_form.get("shipping_fee").setValue(this.shippingFee)
     this.order_form.get("handle").setValue(this.handle)
     this.order_form.get("tax").setValue(this.tax)
-    this.order_form.get("total").setValue(this.total)
+    this.order_form.get("total").setValue(this.decimalPipe.transform(this.total, '1.2-2'));
 
     setTimeout(async () => {
       console.log(this.order_form.value)
@@ -483,31 +482,36 @@ export class CheckoutPage {
   }
 
   async proceedToPaypal() {
-    if (this.shippingAddrChanged) {
-      let alert = this.alertCtrl.create({
-        subTitle: 'Please update shipping rates',
-        buttons: ['Dismiss']
-      });
-      alert.present();
-      return;
-    }
-
-    this.calcShipping()
-    if (!this.order_form.valid) {
-      return;
-    }
-    this.dataService.placeOrder(this.order_form.value);
-    if (this.shipToDifferent.checked) {
-      if (this.wantSave.checked) {
-        if (this.appUser.shippingAddresses && this.appUser.shippingAddresses.length > 0)
-          this.appUser.shippingAddresses.push(this.order_form.get("shipping_group").value as Shipping);
-        else
-          this.appUser.shippingAddresses = [this.order_form.get("shipping_group").value as Shipping];
-
-        await this.dataService.saveAppUser(this.user, this.appUser)
+    if (this.order_form.valid) {
+      if (this.shippingAddrChanged) {
+        let alert = this.alertCtrl.create({
+          subTitle: 'Please update shipping rates',
+          buttons: ['Dismiss']
+        });
+        alert.present();
+        return;
       }
+
+      this.calcShipping()
+      if (!this.order_form.valid) {
+        return;
+      }
+      this.dataService.placeOrder(this.order_form.value);
+      if (this.shipToDifferent.checked) {
+        if (this.wantSave.checked) {
+          if (this.appUser.shippingAddresses && this.appUser.shippingAddresses.length > 0)
+            this.appUser.shippingAddresses.push(this.order_form.get("shipping_group").value as Shipping);
+          else
+            this.appUser.shippingAddresses = [this.order_form.get("shipping_group").value as Shipping];
+
+          await this.dataService.saveAppUser(this.user, this.appUser)
+        }
+      }
+      await this.placeOrder()
+    } else {
+      console.log(this.order_form);
+      console.log(this.order_form.controls);
     }
-    await this.placeOrder()
   }
 
   async placeOrder() {
@@ -567,7 +571,7 @@ export class CheckoutPage {
       //payPalShippingAddressOption: 2 // PayPalShippingAddressOptionPayPal
     }));
 
-    let payment = new PayPalPayment(this.total.toString(), 'USD', 'Description', 'sale');
+    let payment = new PayPalPayment(this.decimalPipe.transform(this.total.toString(), '1.2-2'), 'USD', 'Description', 'sale');
     console.log(payment)
     // Example sandbox response
     // {
