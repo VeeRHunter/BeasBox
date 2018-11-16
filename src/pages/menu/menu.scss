@@ -29,13 +29,13 @@ page-menu {
     .user-name {
         font-size: 2.5rem;
         font-weight: bold;
-        color: #FFF;
+        color: black;
         text-align: right;
         margin-bottom: 0;
     }
     .view-profile {
         font-size: 1.4rem;
-        color: #FFF;
+        color: black;
         text-align: right;
     }
     .list-md .item-block .item-inner {
@@ -60,6 +60,7 @@ page-menu {
     .logout-bt {
         background: url(../assets/imgs/bg-red.svg) center center no-repeat;
         background-size: cover;
+        color: black;
         // color: black;
     }
 }
